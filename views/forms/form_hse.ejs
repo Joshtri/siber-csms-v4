@@ -1,0 +1,131 @@
+<form action="/postHSEPlan" id="hsePlanForm" href="" method="POST" class="php-email-form hidden" enctype="multipart/form-data">
+<h3>Data Usulan HSE PLAN</h3>
+<hr>
+
+<div class="row">
+
+    <style>
+
+    /* Custom Tooltip Style */
+    .tooltip-inner {
+        background-color: #19314a; /* Ganti warna latar belakang tooltip sesuai keinginan Anda */
+        color: #ffffff; /* Ganti warna teks tooltip sesuai keinginan Anda */
+        border: 1px solid #19314a; /* Ganti warna border tooltip sesuai keinginan Anda */
+    }
+    </style>
+
+    <div class="form-group col-md-6">
+    <label for="name">Risk Assessment ID</label>
+    <input data-bs-toggle="tooltip" data-bs-title="Keterangan : Isi ID Risk Assessment" type="text" name="risk_assessment_id" class="form-control custom-tooltip" id="risk_assessment_id" required>
+    </div>
+
+    <div class="form-group col-md-6 mt-3 mt-md-0">
+    <label for="name">Risk Level</label>
+    <input data-bs-toggle="tooltip" data-bs-title="Keterangan : Isi Data Risk Level" type="text" class="form-control custom-tooltip" name="risk_level" id="risk_level" required>
+    </div>
+</div>
+
+<div class="form-group mt-3">
+    <label for="name">Nama Pekerjaan</label>
+    <input data-bs-toggle="tooltip" data-bs-title="Keterangan : Isi Nama Pekerjaan" type="text" class="form-control custom-tooltip" name="nama_pekerjaan" id="nama_pekerjaan" required>
+</div>
+
+<div class="form-group mt-3">
+    <label for="name">Nama Mitra Kerja</label>
+    <input data-bs-toggle="tooltip" data-bs-title="Keterangan : Isi Nama Mitra Kerja" type="text" class="form-control custom-tooltip" name="nama_mitra" id="nama_mitra" required> 
+</div>
+
+<div class="form-group mt-3">
+    <label for="name">Nomor Handphone / No WA</label>
+    <input data-bs-toggle="tooltip" data-bs-title="Keterangan : Isi Data No HP" type="number" class="form-control custom-tooltip" name="no_hp" id="no_hp" required>
+</div>
+
+<div class="form-group mt-3">
+    <label for="name">Alamat E-Mail Mitra</label>
+    <input data-bs-toggle="tooltip" data-bs-title="Keterangan : Isi Data Email" type="email" class="form-control custom-tooltip" name="alamat_email" id="alamat_email" required>
+</div>
+
+<div class="form-group mt-3">
+    <label for="name">Tanggal Audit</label>
+    <input type="date" class="form-control" name="tanggal_audit" id="tanggal_audit" required> 
+</div>
+
+<div class="form-group mt-3">
+    <label for="name">Lokasi Kerja <span class="fw-bold">(SHU/Regional/Divisi/Department)</span></label>
+    <input data-bs-toggle="tooltip" data-bs-title="Keterangan : Isi Lokasi Kerja" type="text" class="form-control custom-tooltip" name="lokasi_kerja" id="lokasi_kerja" required> 
+</div>
+
+
+
+
+
+
+<!-- <div class="my-3">
+    <div class="loading">Tanggal Audit</div>
+    <div class="error-message"></div>
+    <div class="sent-message">Your message has been sent. Thank you!</div>
+</div> -->
+
+<hr>
+<!-- * berkas HSE PLAN -->
+<!-- *BAGIAN INI  SEMENTARA DI PROSES * 
+    *   UNTUK 3 DIVISI UNTUK SUBMIT BERKAS BLM DIKERJAKAN.
+
+-->
+<h3>Upload Berkas</h3>
+
+<div class="form-group mt-3">
+    <label for="file1" class="text-capitalize">Berkas - kepemimpinan dan komitmen</label>
+    <input type="file" class="form-control" accept=".pdf" name="files" required>
+    <div class="form-text" id="basic-addon4">* File PDF ( ukuran file maksimal 3 Mb).</div>
+</div>
+
+<div class="form-group mt-3">
+    <label for="file2" class="text-capitalize">Berkas - kebijakan HSSE & strategi</label>
+    <input type="file" class="form-control" accept=".pdf" name="files" required>
+    <div class="form-text" id="basic-addon4">* File PDF ( ukuran file maksimal 3 Mb).</div>
+</div>
+
+
+    <div class="form-group mt-3">
+    <label for="name" class="text-capitalize">Berkas - organisasi, tanggung jawab, sumber daya, standar & dokumentasi</label>
+    <input type="file" class="form-control" name="files" required> 
+    <div class="form-text" id="basic-addon4">* File PDF ( ukuran file maksimal 3 Mb).</div>
+</div>
+
+<div class="form-group mt-3">
+    <label for="name" class="text-capitalize">Berkas - Manajemen Resiko</label>
+    <input type="file" class="form-control" name="files" required>
+    <div class="form-text" id="basic-addon4">* File PDF ( ukuran file maksimal 3 Mb).</div>
+</div>
+
+<div class="form-group mt-3">
+    <label for="name" class="text-capitalize">Berkas - Perencanaan & produser</label>
+    <input type="file" class="form-control" name="files" required>
+    <div class="form-text" id="basic-addon4">* File PDF ( ukuran file maksimal 3 Mb).</div>
+</div>
+
+<div class="form-group mt-3">
+    <label for="name" class="text-capitalize">Berkas - implementasi & pemantauan kinerja</label>
+    <input type="file" class="form-control" name="files" required>
+    <div class="form-text" id="basic-addon4">* File PDF ( ukuran file maksimal 3 Mb).</div>
+</div>
+
+<div class="form-group mt-3">
+    <label for="name" class="text-capitalize">Berkas - audit dan tinjauan</label>
+    <input type="file" class="form-control" name="files" required>
+    <div class="form-text" id="basic-addon4">* File PDF ( ukuran file maksimal 3 Mb).</div>
+</div>
+
+<div class="form-group mt-3">
+    <label for="name" class="text-capitalize">Berkas - manajemen K3LL & pencapaian lainnya</label>
+    <input type="file" class="form-control" name="files" required>
+    <div class="form-text" id="basic-addon4">* File PDF ( ukuran file maksimal 3 Mb).</div>
+</div>
+
+
+<div  class="text-center">
+    <button type="submit" class="btn-green">Kirim</button>
+</div>
+
+</form>

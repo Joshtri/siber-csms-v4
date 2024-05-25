@@ -1,0 +1,28 @@
+/* Custom styling for your modal */
+.custom-modal-content {
+  background-color: #2C3E50;
+  color: #ECF0F1;
+}
+
+.custom-modal-header {
+  border-bottom: 1px solid #BDC3C7;
+}
+
+.custom-modal-title {
+  color: #3498DB;
+}
+
+.custom-modal-body,
+.custom-modal-footer {
+  border-top: 1px solid #BDC3C7;
+}
+
+/* Close button styles */
+.custom-close {
+  color: #3498DB;
+}
+
+.custom-close:hover,
+.custom-close:focus {
+  color: #2980B9;
+}

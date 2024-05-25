@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <%-include('partials/links'); %>
+    <link href="assets/css/inputCostum.css" rel="stylesheet">
+</head>
+<body>
+    <%-include('partials/header'); %>
+
+    <!-- ======= Login Us Section ======= -->
+    <section id="contact" class="contact">
+        <div class="container">
+            
+            <div class="section-title">
+            <h2>LOGIN-PERTAMINA</h2>
+            </div>
+            
+            <form action="/api/create_user" method="POST">
+                <div class=" mx-auto col-7 mt-1"> 
+                    <div class="form-floating d-flex mb-3">
+
+                        <select name="divisi_name" class="form-select" id="" required>
+                            <option value="">-</option>
+                            <option value="HSSE">HSSE</option>
+                            <option value="ICT">ICT</option>
+                            <option value="WIWS">WIWS</option>
+                            <option value="PE">PE</option>
+                            <option value="RAM">RAM</option>
+                            <option value="PRODUKSI">PRODUKSI</option>
+                            <option value="SCM">SCM</option>
+                        </select>
+                        <label for="floatingPassword">Divisi Name</label>
+                    </div>
+
+                    <div class="form-floating d-flex">
+                        <input type="text" class="form-control" id="password" name="password" oninput="checkPINLength()" maxlength="11" placeholder="Password" required>
+                        <label for="floatingPassword">PIN</label>
+                        <button type="button" class="btn btn-outline-light" onclick="togglePasswordVisibility()"><i class="text-dark bi bi-eye-slash"></i></button>
+                    </div>
+
+                <div class="form-text ms-2" id="basic-addon4">*) Masukkan PIN anda</div>
+    
+                <div class="text-center mb-5 pb-5">
+                    <button type="submit" class="mt-4 btn btn-submit">Login</button>
+                </div>
+            
+            </form>
+        </div>
+    </section><!-- End About Us Section -->
+</body>
+</html>

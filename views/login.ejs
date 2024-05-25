@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%-include('partials/links'); %>
+</head>
+<body>
+    <%-include('partials/header'); %>
+
+      <main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <ol>
+            <li><a href="/"><i class="fa-solid fa-house mx-1"></i>Beranda</a></li>
+            <li>Login-Pertamina</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+    
+
+    <!-- ======= Login Us Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+        
+        <div class="section-title">
+          <h2>LOGIN-PERTAMINA</h2>
+        </div>
+
+        
+        <form action="/post_loginUser" method="POST">
+          <div class=" mx-auto col-7 mt-1"> 
+            <!-- <div class="form-floating d-flex ">
+              <input type="text" class="form-control" name="username" value="pertamina" placeholder="df">
+            </div> -->
+
+            
+
+            <div class="form-floating d-flex">
+              <input type="password" class="form-control" id="password" name="password" oninput="checkPINLength()" maxlength="11" placeholder="Password" >
+              <label for="floatingPassword">PIN</label>
+              <button type="button" class="btn btn-outline-light" onclick="togglePasswordVisibility()"><i class="text-dark bi bi-eye-slash"></i></button>
+            </div>
+            <div class="form-text ms-2" id="basic-addon4">*) Masukkan PIN anda</div>
+
+            <div class="form-floating d-flex mt-3">
+
+              <select name="divisi_name" class="form-select" id="" required>
+                  <option value="">-</option>
+                  <option value="HSSE">HSSE</option>
+                  <option value="ICT">ICT</option>
+                  <option value="WIWS">WIWS</option>
+                  <option value="PE">PE</option>
+                  <option value="RAM">RAM</option>
+                  <option value="PRODUKSI">PRODUKSI</option>
+                  <option value="SCM">SCM</option>
+              </select>
+              
+              <label for="floatingPassword">Login Sebagai :</label>
+            </div>
+            
+
+
+          <div class="text-center mb-5 pb-5">
+            <button type="submit" class="mt-4 btn btn-submit">Login</button>
+          </div>
+          
+        </form>
+      </div>
+    </section><!-- End About Us Section -->
+
+  </main><!-- End #main -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- JavaScript to show the modal automatically -->
+<script>
+$(document).ready(function() {
+  $('#greetingModal').modal('show');
+});
+</script>
+</body>
+</html>

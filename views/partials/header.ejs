@@ -1,0 +1,60 @@
+<!-- ======= Header ======= -->
+<title><%= title %></title>
+
+<header
+  id="header"
+  class="d-flex align-items-center"
+  style="background-color: #32599c"
+>
+  <div class="container d-flex align-items-center">
+    <div class="d-flex">
+      <h1 class="logo me-auto">
+        <a class="navbar-brand me-3" href="/">
+          <img
+            src="/logo.png"
+            alt="Logo"
+            width="200"
+            height="48"
+            class="d-inline-block align-text-top"
+          />
+        </a>
+      </h1>
+      <a href="/" class="fs-3 fw-bold text-white">| SIBER CSMS</a>
+    </div>
+
+    <!-- Uncomment below if you prefer to use an image logo -->
+
+    <nav id="navbar" class="navbar ms-auto">
+      <ul>
+        <li><a class="nav-link scrollto active" href="#hero">Beranda</a></li>
+        <li><a class="nav-link scrollto" href="#contact">Tentang Kami</a></li>
+
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+    <!-- .navbar -->
+  </div>
+</header>
+<!-- End Header -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const links = document.querySelectorAll('#navbar .nav-link');
+
+    links.forEach(link => {
+      link.addEventListener('click', function(event) {
+        const href = this.getAttribute('href');
+
+        // Jika href bukan #contact, alihkan ke halaman /
+        if (href !== '#contact') {
+          event.preventDefault(); // Menghentikan perilaku default dari link
+          window.location.href = '/'; // Mengarahkan ke halaman /
+        }
+        if (href !== '#hero') {
+          event.preventDefault(); // Menghentikan perilaku default dari link
+          window.location.href = '/'; // Mengarahkan ke halaman /
+        }
+      });
+    });
+  });
+</script>

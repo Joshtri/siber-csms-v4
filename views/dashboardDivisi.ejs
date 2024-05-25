@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%-include('partials/links'); %>
+</head>
+<body>
+    <%-include('partials/header_divisi'); %>
+    
+    <main id="main" class="mb-4">
+        <!-- START DASHBOARD - DEFAULT CONTENT-->
+        <div id="content-container">
+    
+          <!-- ======= Breadcrumbs ======= -->
+          <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+    
+              <div class="d-flex justify-content-between align-items-center">
+                <h2 class="fw-bold">Dashboard - Fungsi <%= divisi_user.divisi_name %> </h2>        
+         
+              </div>
+              <p><span class="fw-bold text-uner">Selamat Datang di</span> Sistem Informasi Verifikasi Berkas CSMS Pertaminau Limau Field</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <ol>
+                  <li><a href="#" id="menu-dashboard"><i class="fa-solid fa-house mx-1"></i>Dashboard Pertamina</a></li>
+                  <!-- <li>Login-Pertamina</li> -->
+                </ol>
+              </div>
+              
+            </div>
+          </section><!-- End Breadcrumbs -->
+    
+          <!-- *KOTAK KHUSUS dashboard -->
+          <section id="portfolio-details" class="portfolio-details ">
+            <div class="container mt-5">
+              <div class="row">
+                <!-- <h3 class="">Ikhtisar Data</h3> -->
+    
+                <div class="col-3">
+                  <div class="portfolio-info">
+                  <h5>Pengusulan :</h5>
+                  <hr style="border-bottom: 1px solid #eee;">
+                  
+                  <h5 class="text-center"><%=  %></h5>
+                  <p class="small fw-light" data-bs-toggle="modal" data-bs-target="#detailPengusul">Lihat Detail<i class="mt-3 mx-1 fa-solid fa-up-right-from-square fa-bounce"></i></p>
+                  </div>
+                </div>
+    
+                <div class="col-3">
+                  <div class="portfolio-info">
+                    <h5>Verifikasi User :</h5>
+                    <hr style="border-bottom: 1px solid #eee;">
+                    
+                    <h5 class="text-center"><%=  %></h5>
+                    <p class="small fw-light mt-3" onmouseover="showCardVerifikasiUser()" onmouseout="hideCardVerifikasiUser()">Lihat Detail<i class="mx-1 fa-solid fa-up-right-from-square fa-bounce"></i></p>
+                  </div>
+    
+                  <!-- Card untuk ditampilkan saat hover -->
+                  <div id="card-verifikator-user" class="portfolio-info mt-3 animate__animated" style="display: none;">
+                    <div class="card-body">
+                      <!-- Isi card disini -->
+                      <h6 class="fw-bold">Ikhtisar Data</h6><br>
+    
+                      <p>HSE Plan : <%=  %></p>
+                      <p>PSB : <%=  %></p>
+                      <p>PA : <%=  %></p>
+                      <p>PB : <%=  %></p>
+                      
+                    </div>
+                  </div>
+    
+                </div>
+    
+                <div class="col-3">
+                  <div class="portfolio-info">
+                  <h5>Verifikasi HSSE :</h5>
+                  <hr style="border-bottom: 1px solid #eee;">
+                  
+                  <h5 class="text-center pb-5"><%=  %></h5>
+                  <p class="small fw-light"><i class=" hidden mt-3 mx-1 fa-solid fa-up-right-from-square fa-bounce"></i></p>
+                  </div>
+                </div>
+    
+                <div class="col-3">
+                  <div class="portfolio-info">
+                  <h5>Usulan di Tolak :</h5>
+                  <hr style="border-bottom: 1px solid #eee;">
+                  
+                  <h5 class="text-center pb-5"><%=  %></h5>
+                  
+                  <p class="small fw-light"><i class=" mt-3 mx-1 fa-solid fa-up-right-from-square fa-bounce hidden"></i></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- END KOTAK KHUSUS DASHBOARD -->
+        </div>
+        <!-- END DASHBOARD -->
+    
+    
+        <!-- Menu MITRA KHUSUS !!START!! -->
+        <div id="data-mitra-container" class="hidden">
+          <!-- ======= Breadcrumbs ======= -->
+          <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+    
+              <div class="d-flex justify-content-between align-items-center">
+                <h2 class="fw-bold">Data Mitra</h2>
+                
+              </div>
+              <p><span class="fw-bold">Keterangan : </span>Terdapat 4 Berkas Mitra diantaranya HSE PLAN, PSB,PA, & PB</p>
+
+              
+            </div>
+          </section><!-- End Breadcrumbs -->
+    
+    
+          <!-- *KOTAK KHUSUS MITRA -->
+          <section id="portfolio-details" class="portfolio-details ">
+            <div class="container mt-5">
+              <div class="row">
+                <!-- <h3 class="">Ikhtisar Data</h3> -->
+                <% if (divisi_user.divisi_name === 'HSSE') { %>
+                <div class="col-3">
+                  <div class="portfolio-info">
+                  <h5>HSE PLAN :</h5>
+                  <hr style="border-bottom: 1px solid #eee;">
+                  
+                  <h3 class="text-center custom-tooltip" data-bs-toggle="tooltip" data-bs-title="Total yang mengusulkan berkas" data-bs-placement="bottom"><%=  %></h3>
+                  <a href="/data/hse-data">
+                    <p class="small fw-light custom-tooltip" data-bs-toggle="tooltip" data-bs-title="Buka Table HSE" data-bs-placement="left">Data HSE<i class="mx-1 fa-solid fa-up-right-from-square fa-bounce"></i></p>
+                  </a>
+    
+                  <p class="small fw-light" onmouseover="showCardHSE()" onmouseout="hideCardHSE()">Lihat Ikhtisar Data<i class="mx-1 fa-solid fa-hand-pointer fa-fade"></i></p>
+    
+                  </div>
+                  <!-- Card untuk ditampilkan saat hover -->
+                  <div id="card-ikhtisar-HSE" class="portfolio-info mt-1 animate__animated hidden">
+                    <div class="card-body">
+                      <!-- Isi card disini -->
+                      <h6 class="fw-bold">Ikhtisar Data</h6><br>
+                      <p>Belum Diverifikasi: <%=  %></p>
+                      <p>Tidak Lulus : <%=  %></p>
+                      <p>Lulus : <%=  %></p>
+                    </div>
+                  </div>
+    
+                </div>
+                <% } %>
+    
+                <!-- Tampilkan kotak PSB, PB, dan PA untuk role ICT -->
+                <% if (divisi_user.divisi_name === 'ICT' || divisi_user.divisi_name === 'WIWS' || divisi_user.divisi_name === 'PE' || divisi_user.divisi_name === 'RAM' || divisi_user.divisi_name === 'HSSE' || divisi_user.divisi_name === 'PRODUKSI' || divisi_user.divisi_name === 'SCM') { %>
+                <div class="col-3">
+                  <div class="portfolio-info">
+                  <h5>PSB :</h5>
+                  <hr style="border-bottom: 1px solid #eee;">
+                  
+                  <h3 class="text-center custom-tooltip" data-bs-toggle="tooltip" data-bs-title="Total yang mengusulkan berkas" data-bs-placement="bottom"><%=  %></h3>
+                  <a href="/data/psb-data">
+                    <p class="small fw-light custom-tooltip" data-bs-toggle="tooltip" data-bs-title="Buka Table PSB" data-bs-placement="left">Data PSB<i class="mx-1 fa-solid fa-up-right-from-square fa-bounce"></i></p>
+                  </a>
+    
+                  <p class="small fw-light" onmouseover="showCardPSB()" onmouseout="hideCardPSB()">Lihat Ikhtisar Data<i class="mx-1 fa-solid fa-hand-pointer fa-fade"></i></p>
+                  </div>
+    
+                  <!-- Card untuk ditampilkan saat hover -->
+                  <div id="card-ikhtisar-PSB" class="portfolio-info mt-3 animate__animated" style="display: none;">
+                    <div class="card-body">
+                      <!-- Isi card disini -->
+                      <h6 class="fw-bold">Ikhtisar Data</h6><br>
+                      <p>Belum Diverifikasi: <%=  %></p>
+                      <p>Tidak Lulus : <%=  %></p>
+                      <p>Lulus : <%=  %></p>
+                    </div>
+                  </div>
+    
+                </div>
+    
+                <div class="col-3">
+                  <div class="portfolio-info">
+                  <h5>PB :</h5>
+                  <hr style="border-bottom: 1px solid #d17777;">
+                  
+                  <h3 class="text-center custom-tooltip" data-bs-toggle="tooltip" data-bs-title="Total yang mengusulkan berkas" data-bs-placement="bottom"><%=  %></h3>
+                  <a href="/data/pb-data">
+                    <p class="small fw-light custom-tooltip" data-bs-toggle="tooltip" data-bs-title="Buka Table PB" data-bs-placement="left">Data PB<i class="mx-1 fa-solid fa-up-right-from-square fa-bounce"></i></p>
+                  </a>
+    
+                  <p class="small fw-light" onmouseover="showCardPB()" onmouseout="hideCardPB()">Lihat Ikhtisar Data<i class="mx-1 fa-solid fa-hand-pointer fa-fade"></i></p>
+                  </div>
+    
+                  <!-- Card untuk ditampilkan saat hover -->
+                  <div id="card-ikhtisar-PB" class="portfolio-info mt-3 animate__animated" style="display: none;">
+                    <div class="card-body">
+                      <!-- Isi card disini -->
+                      <h6 class="fw-bold">Ikhtisar Data</h6><br>
+                      <p>Belum Diverifikasi: <%=  %></p>
+                      <p>Tidak Lulus : <%=  %></p>
+                      <p>Lulus : <%=  %></p>
+                    </div>
+                  </div>
+    
+                </div>
+    
+                <div class="col-3">
+                  <div class="portfolio-info">
+                  <h5>PA :</h5>
+                  <hr style="border-bottom: 1px solid #eee;">
+                  
+                  <h3 class="text-center custom-tooltip" data-bs-toggle="tooltip" data-bs-title="Total yang mengusulkan berkas" data-bs-placement="bottom"><%=  %></h3>
+                  <a href="/data/pa-data">
+                    <p class="small fw-light custom-tooltip" data-bs-toggle="tooltip" data-bs-title="Buka Table PA" data-bs-placement="left">Data PA<i class="mx-1 fa-solid fa-up-right-from-square fa-bounce"></i></p>
+                  </a>
+    
+                  <p class="small fw-light" onmouseover="showCardPA()" onmouseout="hideCardPA()">Lihat Ikhtisar Data<i class="mx-1 fa-solid fa-hand-pointer fa-fade"></i></p>
+                  </div>
+                  <!-- Card untuk ditampilkan saat hover -->
+                  <div id="card-ikhtisar-PA" class="portfolio-info mt-3 animate__animated" style="display: none;">
+                    <div class="card-body">
+                      <!-- Isi card disini -->
+                      <h6 class="fw-bold">Ikhtisar Data</h6><br>
+    
+                      <p>Belum Diverifikasi: <%=  %></p>
+                      <p>Tidak Lulus : <%=  %></p>
+                      <p>Lulus : <%=  %></p>
+                      
+                    </div>
+                  </div>
+                </div>
+                <% } %>
+    
+              </div>
+            </div>
+          </section>
+          <!-- END KOTAK KHUSUS MITRA -->
+        </div>
+    
+        <!-- END MENU MITRA -->
+    
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content custom-modal-content">
+                  <div class="modal-header custom-modal-header">
+                      <h5 class="modal-title custom-modal-title" id="exampleModalLabel">Konfirmasi</h5>
+                      <button type="button" class="btn-close custom-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body custom-modal-body">
+                      <!-- Modal Content Goes Here -->
+                      <p>Apakah Anda ingin keluar dari dashboard Pertamina?</p>
+                  </div>
+                  <div class="modal-footer custom-modal-footer">
+                      <a href="/logout" class="btn btn-primary">Ya</a>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+    
+      
+        <!-- Modal -->
+        <div class="modal fade" id="detailPengusul" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Pengusul Berkas</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <table class="table table-striped table-light">
+                  <tbody class="">
+                    <tr>
+                      <td>HSE PLAN : </td>
+                      <td><%=  %> Berkas</td>
+                    </tr>
+    
+                    <tr>
+                      <td>PSB : </td>
+                      <td><%=  %> Berkas</td>
+                    </tr>
+    
+                    <tr>
+                      <td>PB : </td>
+                      <td> <%=  %> Berkas</td>
+                    </tr>
+    
+                    <tr>
+                      <td>PA : </td>
+                      <td><%=  %> Berkas</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                <!-- <button type="button" class="btn btn-primary">Understood</button> -->
+              </div>
+            </div>
+          </div>
+        </div>
+    </main><!-- End #main -->
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+POST http://localhost:3005/post_loginUser
+Content-Type: application/json
+
+{
+    "divisi_name": "SCM",
+    "password": "123"
+}
+    

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%-include('partials/links'); %>
+    <link href="assets/css/inputCostum.css" rel="stylesheet">
+</head>
+<body>
+    <%-include('partials/header'); %>
+
+    <style>
+        .custom-toast-header {
+          background-color: white;
+        /* Blue background color */
+          color: white; /* Text color */
+          border-bottom: 1px solid #ccc; /* Border color */
+          padding: 10px; /* Add padding if needed */
+        }
+      
+        .custom-toast-header .custom-avatar {
+          width: 20px; /* Adjust the width as needed */
+          height: 20px; /* Adjust the height as needed */
+          background-color: rgb(45, 118, 196);
+          border-radius: 3px; /* Add border-radius for rounded corners if needed */
+        }
+      
+        .custom-toast-body {
+          background-color: white;
+          border: 1px solid #ccc; /* Add the desired color for the outline */
+          padding: 10px; /* Add padding if needed */
+        }
+      </style>
+
+<style>
+    /* Tambahkan styling sesuai kebutuhan Anda */
+    .hidden {
+      display: none;
+    }
+  </style>
+
+  <style>
+    .my-element {
+
+      animation-duration: 0.5s; /* don't forget to set a duration! */
+    }
+  </style>
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                <ol>
+                    <li><a href="/"><i class="fa-solid fa-house mx-1"></i>Beranda</a></li>
+                    <li>Pengusulan Data Mitra</li>
+                </ol>
+                </div>
+            </div>
+        </section><!-- End Breadcrumbs -->
+
+        
+    </main>
+
+
+    <!-- ======= Login Us Section ======= -->
+    <section id="contact" class="contact">
+        <div class="container">
+          <div class="section-title">
+            <h2>PENGUSULAN DATA MITRA</h2>
+          </div>
+  
+  
+          <div class="col-lg-5 mt-5 mb-5 mt-lg-0 d-flex align-items-stretch php-email-form">
+            <!-- <form action="#" method="post" role="form" class="php-email-form"> 
+            </form> -->
+            <div class="mx-auto">
+              <h3>Tahapan</h3>
+              <hr>
+              
+              <div class="row">
+                <div class="d-flex mt-3">
+                  <a href="#scrollHSE">
+                    <div class="text-center mx-1"><button class="btn btn-sm btn-green" id="hsePlanButton" type="button">HSE Plan</button></div>
+                  </a>
+  
+                  <a href="#scrollPSB">
+                    <div class="text-center mx-2"><button class="btn btn-sm btn-green" id="psbButton" type="button">PSB</button></div>
+                  </a>
+  
+                  <a href="#scrollPB">
+                    <div class="text-center mx-2"><button class="btn btn-sm btn-green" id="pbButton" type="button">PB</button></div>
+                  </a>
+  
+                  <a href="#scrollPA">
+                    <div class="text-center mx-2"><button class="btn btn-sm btn-green" id="paButton" type="button">PA</button></div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div id="scrollHSE"></div>
+          <div id="scrollPSB"></div>
+          <div id="scrollPB"></div>
+          <div id="scrollPA"></div>
+  
+  
+          <!-- form Usulan HSE -->
+          <div class="col-lg-7 mt-5 pt-5 mt-lg-0 mx-auto d-flex align-items-stretch" >
+            <%-include('forms/form_hse'); %>
+            <!-- call the partial form -->
+          </div>
+  
+   
+          <!-- form Usulan PSB -->
+          <div class="col-lg-7 mt-5 mt-lg-0 mx-auto d-flex align-items-stretch">
+            <%-include('forms/form_psb'); %>
+          </div>
+  
+  
+          <!-- form Usulan PB -->
+          <div class="col-lg-7 mt-5 mt-lg-0 mx-auto d-flex align-items-stretch ">
+            <%-include('forms/form_pb'); %>
+          </div>
+  
+  
+          <!-- form Usulan PA -->
+          <div class="col-lg-7 mt-5 mt-lg-0 mx-auto d-flex align-items-stretch">
+            <%-include('forms/form_pa'); %>
+  
+          </div>
+  
+        </div>
+      </section><!-- End About Us Section -->
+
+
+      <script src="/js/customTooltip.js"></script>
+    <script src="/js/formMitra.js"></script>
+</body>
+</html>

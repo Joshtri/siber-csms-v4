@@ -1,0 +1,128 @@
+.btn-get-started {  
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 4px;
+    transition: 0.5s;
+    line-height: 1;
+    color: #fff;
+    animation-delay: 0.8s;
+    background: #85C226;
+}
+
+
+.btn-get-started:hover {
+    background: #76a033;
+}
+
+.btn-access-login{
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 4px;
+    transition: 0.5s;
+    line-height: 1;
+    color: #fff;
+    animation-delay: 0.8s;
+    background: #85C226;
+}
+
+.btn-access-login:hover {
+    background: #76a033;
+}
+
+.btn-submit{
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 4px;
+    transition: 0.5s;
+    line-height: 1;
+    color: #fff;
+    animation-delay: 0.8s;
+    background: #85C226;
+}
+
+
+.btn-submit:hover{
+    background: #85C226;
+}
+
+
+.btn-status-green{
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 4px;
+    transition: 0.5s;
+    line-height: 1;
+    color: #fff;
+    animation-delay: 0.8s;
+    /* background: #85C226; */
+    background: rgba(133, 194, 38, 1);
+}
+
+
+.btn-status-green:hover{
+    /* background: #72a323; */
+    color: #fff;
+    background: rgb(116, 167, 34);
+}
+
+.btn-status-red{
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 4px;
+    transition: 0.5s;
+    line-height: 1;
+    color: #fff;
+    animation-delay: 0.8s;
+    background: #DA251C;
+    /* background: rgba(133, 194, 38, 1); */
+}
+
+
+.btn-status-red:hover{
+    background: #ac251e;
+    color: #fff;
+    /* background: rgb(116, 167, 34); */
+}
+
+.btn-status-warm{
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 4px;
+    transition: 0.5s;
+    line-height: 1;
+    color: #fff;
+    animation-delay: 0.8s;
+    background: #eeb50c;
+}
+
+/* #ffc107 */
+
+.btn-status-warm:hover{
+    background: #d3a20f;
+    color: #fff;
+    /* background: rgb(116, 167, 34); */
+}

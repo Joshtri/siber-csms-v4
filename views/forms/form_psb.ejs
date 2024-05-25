@@ -1,0 +1,184 @@
+<form action="/post-data-psb" id="psbForm" method="POST" class="php-email-form hidden" enctype="multipart/form-data">
+    <h3>Data Usulan PSB</h3>
+    <hr>
+
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="name">Risk Assessment ID</label>
+        <input data-bs-toggle="tooltip" data-bs-title="Keterangan : Isi ID Risk Assessment" type="text" name="risk_assessment_id" class="form-control custom-tooltip" id="risk_assessment_id" required>
+      </div>
+      <div class="form-group col-md-6 mt-3 mt-md-0">
+        <label for="name">Risk Level</label>
+        <input data-bs-toggle="tooltip" data-bs-title="Keterangan : Isi Data Risk Level" type="text" class="form-control custom-tooltip" name="risk_level" id="risk_level" required>
+      </div>
+    </div>
+
+    <div class="form-group mt-3">
+      <label for="name">Nomor Kontrak</label>
+      <input data-bs-toggle="tooltip" data-bs-title="Keterangan : Isi Data Nomor Kontrak" type="text" class="form-control custom-tooltip" name="nomor_kontrak" id="nomor_kontrak" required>
+    </div>
+    
+    <div class="form-group mt-3">
+      <label for="name">Nama Pekerjaan</label>
+      <input data-bs-toggle="tooltip" data-bs-title="Keterangan : Isi Data Nama Pekerjaan" type="text" class="form-control custom-tooltip" name="nama_pekerjaan" id="nama_pekerjaan" required> 
+    </div>
+
+    <div class="form-group mt-3">
+      <label for="name">Nama Kontraktor</label>
+      <input data-bs-toggle="tooltip" data-bs-title="Keterangan : Isi Data Nama Kontraktor" type="text" class="form-control custom-tooltip" name="nama_kontraktor" id="nama_kontraktor" required> 
+    </div>
+
+    <div class="form-group mt-3">
+      <label for="name">Nomor Handphone / No WA</label>
+      <input data-bs-toggle="tooltip" data-bs-title="Keterangan : Isi Data No HP" type="number" class="form-control custom-tooltip" name="no_hp" id="no_hp" required>
+    </div>
+
+    <div class="form-group mt-3">
+      <label for="name">Alamat E-Mail Mitra</label>
+      <input data-bs-toggle="tooltip" data-bs-title="Keterangan : Isi Data Email" type="email" class="form-control custom-tooltip" name="alamat_email" id="alamat_email" required>
+    </div>
+
+    <div class="form-group mt-3">
+      <label for="name">Tanggal Penilaian</label>
+      <input type="date" class="form-control" name="tanggal_penilaian" id="tanggal_penilaian" required>
+    </div>
+
+
+    <!-- <div class="form-group mt-3">
+      <label for="name" class="text-capitalize">Pilih Fungsi yang Dituju</label>
+      <select class="form-select" name="kategori_pb" id="inputGroupSelect02">
+        <option selected>Pilih Fungsi</option>
+        <option value="PB1">PB 1</option>
+        <option value="PB2">PB 2</option>
+        <option value="PB3">PB 3</option>
+        <option value="PB4">PB 4</option>
+      </select>
+      <small class="form-text text-muted d-block mt-2">*) Pilih fungsi yang sesuai dengan berkas</small>
+    </div> -->
+
+    <style>
+      /* Add this CSS to your stylesheet or in the head of your HTML document */
+      .radio-group {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .radio-container {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .radio-container input {
+        opacity: 0;
+        cursor: pointer;
+        margin-right: 5px; /* Adjust the margin to your preference */
+      }
+
+      .checkmark {
+        height: 20px;
+        width: 20px;
+        background-color: #eee;
+        border-radius: 50%;
+        margin-right: 5px; /* Adjust the margin to your preference */
+      }
+
+      .radio-container:hover .checkmark {
+        background-color: #ccc;
+      }
+
+      .radio-container input:checked + .checkmark {
+        background-color: #4CAF50;
+      }
+
+      .radio-container input:checked + .checkmark:after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #fff;
+      }
+    </style>
+    
+
+    <div class="form-group mt-3">
+      <label for="name" class="text-capitalize">Pilih Fungsi yang Dituju</label>
+
+      <select name="fungsi_dituju2" class="form-select" id="">
+        <option value="">-</option>
+        <option value="ICT">ICT</option>
+        <option value="WIWS">WIWS</option>
+        <option value="PE">PE</option>
+        <option value="RAM">RAM</option>
+        <option value="PRODUKSI">PRODUKSI</option>
+        <option value="SCM">SCM</option>
+      </select>
+      <small class="form-text text-muted d-block mt-2">*) Pilih fungsi yang sesuai dengan berkas</small>
+   </div>
+  
+    <hr>
+
+    <h3>Upload Berkas PSB</h3>
+
+    <div class="form-group mt-3">
+      <label for="name" class="text-capitalize">Berkas - Rencana Kerja</label>
+      <input type="file" class="form-control" accept=".pdf" name="files" required>
+      <div class="form-text" id="basic-addon4">* File PDF ( ukuran file maksimal 3 Mb).</div>
+    </div>
+
+    <div class="form-group mt-3">
+      <label for="name" class="text-capitalize">Berkas - Potensi Bahaya</label>
+      <input type="file" class="form-control" accept=".pdf" name="files" required>
+      <div class="form-text" id="basic-addon4">* File PDF ( ukuran file maksimal 3 Mb).</div>
+    </div>
+
+    <div class="form-group mt-3">
+      <label for="name" class="text-capitalize">Berkas - Rencana Tanggap Darurat & Prosedur</label>
+      <input type="file" class="form-control" accept=".pdf" name="files" required>
+      <div class="form-text" id="basic-addon4">* File PDF ( ukuran file maksimal 3 Mb).</div>
+    </div>
+
+    <div class="form-group mt-3">
+      <label for="name" class="text-capitalize">Berkas - Pre-Job Safety Meeting</label>
+      <input type="file" class="form-control" accept=".pdf" name="files" required>
+      <div class="form-text" id="basic-addon4">* File PDF ( ukuran file maksimal 3 Mb).</div>
+    </div>
+
+    <div class="form-group mt-3">
+      <label for="name" class="text-capitalize">Berkas - Orientasi Lapangan</label>
+      <input type="file" class="form-control" accept=".pdf" name="files" required>
+      <div class="form-text" id="basic-addon4">* File PDF ( ukuran file maksimal 3 Mb).</div>
+    </div>
+
+    <div class="form-group mt-3">
+      <label for="name" class="text-capitalize">Berkas - Pemecahan masalah-masalah HSSE</label>
+      <input type="file" class="form-control" accept=".pdf" name="files" required>
+      <div class="form-text" id="basic-addon4">* File PDF ( ukuran file maksimal 3 Mb).</div>
+    </div>
+
+    <div class="form-group mt-3">
+      <label for="name" class="text-capitalize">Berkas - pelatihan HSSE</label>
+      <input type="file" class="form-control" accept=".pdf" name="files" required>
+      <div class="form-text" id="basic-addon4">* File PDF ( ukuran file maksimal 3 Mb).</div>
+    </div>
+
+    <div class="form-group mt-3">
+      <label for="name" class="text-capitalize">Berkas - Komitmen Manajemen Kontraktor</label>
+      <input type="file" class="form-control" accept=".pdf" name="files" required>
+      <div class="form-text" id="basic-addon4">* File PDF ( ukuran file maksimal 3 Mb).</div>
+    </div>
+
+    <!-- <div class="my-3">
+      <div class="loading">Tanggal Audit</div>
+      <div class="error-message"></div>
+      <div class="sent-message">Your message has been sent. Thank you!</div>
+    </div> -->
+
+    <div class="text-center">
+      <button type="submit" class="btn-green">Kirim</button>
+    </div>
+  </form>

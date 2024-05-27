@@ -32,7 +32,7 @@ const client = redis.createClient({
     port: process.env.REDIS_PORT,
   }
 });
-(async () => { await client.connect(); })()
+(async () => { await client.connect(); })();
 // Express Session
 app.use(
     session({
@@ -54,6 +54,9 @@ app.use(
 
 
 connectDB();
+
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 // Gunakan middleware untuk membaca JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -68,8 +71,14 @@ app.set('view engine', 'ejs');
 // Gunakan middleware untuk menyajikan file statis dari folder 'public'
 // eslint-disable-next-line no-undef
 app.use(express.static(path.join(process.cwd(), 'public')));
-app.use('/', mainRoute, dashboardRoute);
 
+// Apply 10-second delay to all routes for testing purposes
+app.use(async (req, res, next) => {
+    await delay(10000); // Delay of 10 seconds
+    next();
+});
+
+app.use('/', mainRoute, dashboardRoute);
 app.use('/data', hseplanRoute, psbRoute,paRoute,pbRoute);
 // Tentukan lokasi folder views
 

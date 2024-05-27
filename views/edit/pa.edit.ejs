@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <title>Document</title> -->
+    <%-include('partials/links'); %>
+</head>
+<body>
+    <%-include('partials/header_divisi'); %>
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+          <div class="container">
+    
+            <div class="d-flex justify-content-between align-items-center">
+              <ol>
+                <li><a href="/"><i class="fa-solid fa-house mx-1"></i>Beranda</a></li>
+                <li>Pengusulan Data Mitra</li>
+              </ol>
+            </div>
+    
+          </div>
+        </section><!-- End Breadcrumbs -->
+    
+        <!-- ======= Login Us Section ======= -->
+        <section id="contact" class="contact">
+            <div class="container">
+            
+                <div class="section-title">
+                    <h2>EDIT DATA MITRA - PA</h2>
+                </div>
+
+                <div class="mb-3">
+                    <a href="/data/pa_data" class="btn btn-sm btn-success"><i class="fa-solid fa-chevron-left fa-beat-fade"></i> Kembali</a>
+                </div>
+
+                <div class="col-lg-12  mx-auto d-flex">
+                    <form role="form" action="/data/postEdit_pa/<%= dataPA.id %>" method="POST" class="php-email-form"> 
+                        <h3>Data Mitra</h3>
+
+
+                        <!-- baris pertama. -->
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="name">Risk Assessment ID</label>
+                                <input disabled class="form-control" value="<%= dataPA.risk_assessment_id %>">
+                            </div>
+
+
+                            <div class="form-group col-md-4">
+                                <label for="name">Risk Level</label>
+                                <input type="text"  class="form-control custom-tooltip" value="<%= dataPA.risk_level %>" disabled>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <!-- Dapatkan tanggal_audit dari server atau sumber data lainnya -->
+                                <% const rawDate = dataPA.tanggal_penilaian; %>
+            
+                                <!-- Konversi tanggal menggunakan JavaScript -->
+                                <% const formattedDate = new Date(rawDate).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }); %>
+            
+                                <label for="name">Tanggal Penilaian</label>
+                                <input type="text" class="form-control" id="tanggal_audit" value="<%= formattedDate  %>" disabled> 
+                            </div>
+
+                        </div>
+                        <!-- end baris pertama -->
+
+                        <!-- baris kedua -->
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="name">Nomor Kontrak</label>
+                                <input type="text" class="form-control" value="<%= dataPA.nomor_kontrak %>"  disabled>
+                            </div>
+            
+                            <div class="form-group col-md-4">
+                                <label for="name">Nama Pekerjaan</label>
+                                <input type="text" class="form-control" value="<%= dataPA.nama_pekerjaan %>"  disabled>
+                            </div>
+            
+                            <div class="form-group col-md-4">
+                                <label for="name">Nama Kontraktor</label>
+                                <input type="text" class="form-control" value="<%= dataPA.nama_kontraktor %>" disabled>
+                            </div>
+                        </div>
+                        <!-- end baris kedua -->
+                        <hr>
+                        <h3 class="mt-3">Kelengkapan Berkas</h3>
+
+                        <% if (dataPA) { %>
+                            <!-- Tambahkan informasi lainnya yang Anda ingin tampilkan -->
+                        
+                            <!-- Loop untuk menampilkan informasi file -->
+                            <% for (let i = 1; i <= 8; i++) { %>
+                                <div class="form-group col-lg-6 mt-3">
+                                    <label for="file<%= i %>" class="text-capitalize">Berkas - Manajemen Resiko <%= i %></label>
+                                    <input type="text" class="form-control" accept=".pdf" name="files" value="<%= dataPA['file' + i] %>" disabled>
+                                    <% if (fileURLs[i - 1]) { %>
+                                        <a href="<%= fileURLs[i - 1] %>" target="_blank"><i class="fa-solid fa-eye fa-beat-fade mx-1"></i>Lihat Berkas</a>
+                                        <a href="<%= fileURLs[i - 1] %>" download target="_blank">|<i class="fa-solid fa-file-arrow-down fa-beat-fade mx-1"></i>Download Berkas</a>
+                                    <% } else { %>
+                                        <p>Tidak Ada Berkas</p>
+                                    <% } %>
+                                </div>
+                            <% } %>
+                        <% } else { %>
+                            <p>Data not found</p>
+                        <% } %>
+
+                        <hr>
+
+                        <h3>Verifikasi Mitra</h3>
+                        <div class="row d-flex">
+                            <div class="form-group col-lg-6">
+                            <label for="" class="form-label">Progres Mitra : </label>
+                            <div class="card">
+                                <div class="card-body">
+
+
+                                <table class="table table-sm table-hover">
+                                    <thead class="text-center">
+                                        <th>HSE</th>
+                                    <th>
+                                        <% if (dataPA.fungsi_dituju2 === "ICT") { %>
+                                        ICT
+                                        <% } else if (dataPA.fungsi_dituju2 === "WIWS") { %>
+                                        WIWS
+                                        <% } else if (dataPA.fungsi_dituju2 === "PE") { %>
+                                        PE
+                                        <% } else if (dataPA.fungsi_dituju2 === "RAM") { %>
+                                        RAM
+                                        <% } else if (dataPA.fungsi_dituju2 === "PRODUKSI") { %>
+                                        PRODUKSI
+                                        <% } else if (dataPA.fungsi_dituju2 === "SCM") { %>
+                                        SCM
+                                        <% } else { %>
+                                        KOSONG
+                                        <% } %>
+                                    </th>
+
+                                    </thead>
+
+                                    <tbody class="text-center">
+                                    <tr>
+                                        
+                                        <td>
+                                        <% if (dataPA.status_mitra === "Belum Diproses") { %>
+                                            <button type="button" class="btn btn-sm btn-status-warm custom-tooltip" data-bs-title="Verifikasi : Diproses" data-bs-toggle="tooltip">
+                                                <i class="fa-solid fa-spinner fa-spin"></i>
+                                            </button>
+                                            
+                                        <% }else if (dataPA.status_mitra === "Diterima") { %>
+                                            <button type="button" class="btn btn-sm btn-status-green custom-tooltip" data-bs-title="Verifikasi : Lulus" data-bs-toggle="tooltip">
+                                                <i class="fa-solid fa-check"></i>
+                                            </button>
+                                        <% } else if(dataPA.status_mitra === "Ditolak") { %>
+                                            <button type="button" class="btn btn-sm btn-status-red custom-tooltip" data-bs-title="Verifikasi : Tidak Lulus" data-bs-toggle="tooltip">
+                                            <i class="fa-solid fa-x fa-beat-fade"></i>
+                                            </button>
+                                        <% } %>
+                                        </td>
+
+                                        <td>
+                                        <!-- ini utk hse sbg status mitra 2 knp 2, karena baru saja ditambah, -->
+                                        <% if (dataPA.status_mitra2 === "Belum Diproses") { %>
+                                            <button type="button" class="btn btn-sm btn-status-warm custom-tooltip" data-bs-title="Verifikasi : Diproses" data-bs-toggle="tooltip">
+                                                <i class="fa-solid fa-spinner fa-spin"></i>
+                                            </button>
+                                            
+                                        <% }else if (dataPA.status_mitra2 === "Diterima") { %>
+                                            <button type="button" class="btn btn-sm btn-status-green custom-tooltip" data-bs-title="Verifikasi : Lulus" data-bs-toggle="tooltip">
+                                                <i class="fa-solid fa-check"></i>
+                                            </button>
+                                        <% } else if(dataPA.status_mitra2 === "Ditolak") { %>
+                                            <button type="button" class="btn btn-sm btn-status-red custom-tooltip" data-bs-title="Verifikasi : Tidak Lulus" data-bs-toggle="tooltip">
+                                            <i class="fa-solid fa-x fa-beat-fade"></i>
+                                            </button>
+                                        <% } %>
+                                        </td>
+
+
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                </div>
+                            </div>
+
+                            <!-- end card. -->
+
+                            </div>
+                            <!-- end form group -->
+
+                        </div>
+
+
+                        <% if (divisi_user.divisi_name === 'HSSE') { %>
+                            <div class="form-group col-md-4">  
+                              <label for="" class="form-label">Ubah Progres Mitra <span class="fw-lighter">(*Oleh Fungsi HSE)</span></label>
+                              <select class="form-control" name="status_mitra" id="status_mitra">
+                                <option value="Belum Diproses" <%= dataPA.status_mitra === 'Belum Diproses' ? 'selected' : '' %>>Belum Diproses</option>
+                                <option value="Ditolak" <%= dataPA.status_mitra === 'Ditolak' ? 'selected' : '' %>>Tidak Lulus</option>
+                                <option value="Diterima" <%= dataPA.status_mitra === 'Diterima' ? 'selected' : '' %>>Lulus</option>
+                              </select>
+                            </div>
+                        <% } %>
+
+                        <% if (divisi_user.divisi_name === 'ICT' || divisi_user.divisi_name === 'WIWS' || divisi_user.divisi_name === 'PE' || divisi_user.divisi_name === 'RAM' || divisi_user.divisi_name === 'PRODUKSI' || divisi_user.divisi_name === 'SCM') { %>
+                            <div class="form-group col-md-4">
+                              <label for="" class="form-label">Ubah Progres Mitra <span class="fw-lighter">(*Oleh Fungsi 
+                                <% if (dataPA.fungsi_dituju2 === "ICT") { %>
+                                  ICT
+                                <% } else if (dataPA.fungsi_dituju2 === "WIWS") { %>
+                                  WIWS
+                                <% } else if (dataPA.fungsi_dituju2 === "PE") { %>
+                                  PE
+                                <% } else if (dataPA.fungsi_dituju2 === "RAM") { %>
+                                  RAM
+                                <% } else if (dataPA.fungsi_dituju2 === "PRODUKSI") { %>
+                                  PRODUKSI
+                                <% } else if (dataPA.fungsi_dituju2 === "SCM") { %>
+                                  SCM
+                                <% } else { %>
+                                  KOSONG
+                                <% } %>)</span></label>
+                              <select class="form-control" name="status_mitra2" id="status_mitra2">
+                                <option value="Belum Diproses" <%= dataPA.status_mitra2 === 'Belum Diproses' ? 'selected' : '' %>>Belum Diproses</option>
+                                <option value="Ditolak" <%= dataPA.status_mitra2 === 'Ditolak' ? 'selected' : '' %>>Tidak Lulus</option>
+                                <option value="Diterima" <%= dataPA.status_mitra2 === 'Diterima' ? 'selected' : '' %>>Lulus</option>
+                              </select>
+                            </div>
+                          <% } %>
+                          
+
+                                
+                                
+                            
+
+                            <script>
+                                function validateInput(input) {
+                                // Hapus karakter non-angka dan pecahan
+                                input.value = input.value.replace(/[^\d.]/g, '');
+                                
+                                // Batasi nilai antara 0 dan 100
+                                if (input.value > 100) {
+                                    input.value = 100;
+                                }
+                                }
+                            </script>
+
+                            <div class="form-group col-md-6 mt-3">
+                                <label for="name">Penilaian <span> </span></label>
+                                <input type="text" class="form-control" name="nilai_total" value="<%= dataPA.nilai_total %>" oninput="validateInput(this)">
+                                <div class="form-text">*) Nilai 0-100, </div>
+                                <div class="form-text">*) Contoh : 33.55</div>
+                            </div>
+                            
+                            <div class="form-group col-md-12 mt-3">
+                                <label for="name">Keterangan Verifikasi</label>
+                                <textarea class="form-control" rows="5" cols="5" name="keterangan_verifikasi" aria-label="With textarea"> <%= dataPA.keterangan_verifikasi %></textarea>
+                                <div class="form-text">*) Berikan keterangan jika ada</div>
+                            </div>
+
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-submit ">Perbarui Data</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    
+    </main>
+</body>
+</html>

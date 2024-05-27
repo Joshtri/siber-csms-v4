@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%-include('partials/links'); %>
+    <link href="/css/table/searchboxStyle.css" rel="stylesheet">
+    <link href="/css/table/tableStyling.css" rel="stylesheet">
+</head>
+<body>
+    <%-include('partials/header_divisi'); %>
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+            <h2 class="fw-bold">Data Mitra - PB</h2>
+            </div>
+            
+            <div class="d-flex justify-content-between align-items-center">
+            <ol>
+                <li><a href="/dashboard_divisi" ><i class="fa-solid fa-house me-1"></i>Dashboard Pertamina</a></li>
+                <li>Data Mitra</li>
+                <li>PB</li>
+            </ol>
+            </div>
+            
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+
+                <!-- *KOTAK KHUSUS dashboard -->
+    <section id="portfolio-details" class="portfolio-details ">
+        <div class="container">
+            <div class="search-box float-end mb-2">
+                <input type="text" placeholder="Search..." id="search-bar">
+                <button class="btn-srch"><i class="bi bi-search"></i></button>
+            </div>
+        </div>
+        
+        <style>
+            .custom-table td,
+            .custom-table th {
+                font-size: 14px; /* Adjust the font size as needed */
+            }
+        </style>
+    
+        <div class="container mt-1">
+            <table class="table table-sm table-hover custom-table" id="data-table-view">
+                <thead class="thead-dark">
+                    <tr class="text-center">
+                        <th>No</th>
+                        <th>Nama Kontraktor</th>
+                        <th>Risk Level</th>
+                        <th>Tanggal Penilaian</th>
+                        <th>Penilaian</th>
+                        <th>Email Mitra</th>
+                        <th>Progres</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (dataPB.length > 0) { %>
+                        <% dataPB.forEach((item, index) => { %>
+                            <tr class="text-center">
+                                <td><%= index + 1 %></td>
+                                <td><%= item.nama_kontraktor %></td>
+                                <td class="text-capitalize"><%= item.risk_level %></td>
+                                <td><%= new Date(item.tanggal_penilaian).toLocaleDateString('id-ID') %></td>
+                                <td><%= item.penilaian %></td>
+                                <td><%= item.alamat_email %></td>
+                                <td>
+                                    <% if (item.status_mitra === "Belum Diproses") { %>
+                                        <button type="button" class="btn btn-sm btn-status-warm custom-tooltip" data-bs-title="Verifikasi : Diproses" data-bs-toggle="tooltip">
+                                            <i class="fa-solid fa-spinner fa-spin"></i>
+                                        </button>
+                                        
+                                    <% }else if (item.status_mitra === "Diterima") { %>
+                                        <button type="button" class="btn btn-sm btn-status-green custom-tooltip" data-bs-title="Verifikasi : Lulus" data-bs-toggle="tooltip">
+                                            <i class="fa-solid fa-check"></i>
+                                        </button>
+                                    <% } else if(item.status_mitra === "Ditolak") { %>
+                                        <button type="button" class="btn btn-sm btn-status-red custom-tooltip" data-bs-title="Verifikasi : Tidak Lulus" data-bs-toggle="tooltip">
+                                            <i class="fa-solid fa-x fa-beat-fade"></i>
+                                        </button>
+                                    <% } %>
+                                </td>
+                                <td>
+                                    <a href="/data/detail_pb/<%= item.id %>"class="btn border-shadow custom-tooltip" data-bs-toggle="tooltip" data-bs-title="Detail Data" data-bs-placement="bottom">
+                                        <span class=""><i class="fa-solid fa-grip-vertical"></i></span>
+                                    </a>
+
+                                    <a href="/data/update_pb/<%= item.id %>" class="btn btn-sm border-shadow update custom-tooltip" id="set_edit" data-bs-toggle="tooltip" data-bs-title="Verifikasi Data" data-bs-placement="bottom"><i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <a href="https://mail.google.com/mail/u/0/#inbox?compose=new" class="btn btn-sm border-shadow update custom-tooltip" id="set_edit" data-bs-toggle="tooltip" data-bs-title="Kirim Email" data-bs-placement="bottom" target="_blank"><i class="fa-regular fa-envelope"></i></a>
+                                
+                                    <!-- <a class="btn border-shadow delete" href="" >
+                                        <span class="text-gradient"><i class="bi bi-trash2-fill"></i></span>
+                                    </a> -->
+                                </td>
+                            </tr>
+                        <% }); %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="8" class="text-center">No data available</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+            
+            <div id="no-data-message" class="alert alert-danger rounded mt-3 text-center" style="display: none;">
+                Data tidak ditemukan<i class="mx-1 fs-5 fa-brands fa-searchengin fa-bounce"></i>
+            </div>
+            <div class="float-end me-5">
+                <div id="pagination-buttons"></div>
+            </div>
+
+        </div>
+    </section>
+    <!-- END KOTAK KHUSUS DASHBOARD -->
+
+</body>
+</html>

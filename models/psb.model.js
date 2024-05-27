@@ -94,10 +94,10 @@ const PSBSchema = new mongoose.Schema({
     default: 'HSSE'
 
   },
+
   fungsi_dituju2: {
     type: String,
-    enum: ['ICT', 'WIWS', 'PE', 'RAM',  'PRODUKSI', 'SCM']
-
+    enum: ['ICT','WIWS','PE','RAM','PRODUKSI','SCM']
   },
 
 });

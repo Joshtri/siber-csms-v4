@@ -3,9 +3,7 @@ import divisiUser from '../models/divisi.model.js';
 import bcrypt from 'bcrypt';
 
 
-export const divisiLogin = async(req,res)=>{
 
-};
 
 export const CreatingPIN = async (req, res) => {
     try {
@@ -69,8 +67,6 @@ export const loginUser = async (req, res) => {
         res.status(500).send("Login failed");
     }
 };
-
-
 
 
 export const createPINPage = async (req,res)=>{

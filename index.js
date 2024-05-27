@@ -14,6 +14,10 @@ const PORT = process.env.PORT;
 
 import mainRoute from './routes/main.route.js';
 import dashboardRoute from './routes/dashboard.route.js';
+import hseplanRoute from './routes/hseplan.route.js';
+import psbRoute from './routes/psb.route.js';
+import paRoute from './routes/pa.route.js';
+import pbRoute  from './routes/pb.route.js';
 
 import connectDB from './config/configDb.js';
 
@@ -21,14 +25,14 @@ import connectDB from './config/configDb.js';
 // import customerRoute from './routes/customer.route.js';
 // import transactionRoute from './routes/transaction.route.js';
 
-// const client = redis.createClient({
-//   password: process.env.REDIS_PASS,
-//   socket: { 
-//     host: process.env.REDIS_HOST,
-//     port: process.env.REDIS_PORT,
-//   }
-// });
-// (async () => { await client.connect(); })()
+const client = redis.createClient({
+  password: process.env.REDIS_PASS,
+  socket: { 
+    host: process.env.REDIS_HOST,
+    port: process.env.REDIS_PORT,
+  }
+});
+(async () => { await client.connect(); })()
 // Express Session
 app.use(
     session({
@@ -37,12 +41,12 @@ app.use(
       resave: false,
       saveUninitialized: true,
       name: 'siber-csms',
-    //   store: new RedisStore({ 
-    //     client: client,
-    //     // ttl: 3600, // waktu kadaluwarsa dalam detik (misalnya 1 jam)
+      store: new RedisStore({ 
+        client: client,
+        ttl: 3600, // waktu kadaluwarsa dalam detik (misalnya 1 jam)
       
       
-    //   }),
+      }),
     
       
     })
@@ -65,8 +69,21 @@ app.set('view engine', 'ejs');
 // eslint-disable-next-line no-undef
 app.use(express.static(path.join(process.cwd(), 'public')));
 app.use('/', mainRoute, dashboardRoute);
+
+app.use('/data', hseplanRoute, psbRoute,paRoute,pbRoute);
 // Tentukan lokasi folder views
-app.set('views', path.join(__dirname, 'views'));
+
+
+// Tentukan lokasi folder views
+const viewsDirectories = [
+    path.join(__dirname, 'views'),
+    path.join(__dirname, 'views', 'data'),
+    path.join(__dirname, 'views', 'detail'),
+    path.join(__dirname, 'views', 'edit')
+];
+
+
+app.set('views', viewsDirectories);
 
 
 

@@ -1,40 +1,48 @@
- <!-- ======= Header ======= -->
-<header id="header" class="d-flex align-items-center" style="background-color: #32599C;">
-    <div class="container d-flex align-items-center">
+<!-- ======= Header ======= -->
+<title><%= title %></title>
 
-        <div class="d-flex">
-
-        <h1 class="logo me-auto">
-            <a class="navbar-brand me-3" href="#">
-            <img src="assets/img/logo.png" alt="Logo" width="200" height="48" class="d-inline-block align-text-top">
-            
-            </a>
-        </h1>  
-        <a href="/" class="fs-3 fw-bold text-white">| SIBER</a>
-        </div>
-        
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-        <nav id="navbar" class="navbar ms-auto">
-        <ul>
-            <li><a class="nav-link scrollto" id="menu-dashboard" href="#">Dashboard</a></li>
-            <li class="dropdown"><a href="#"><span>Data</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-                <li><a  id="menu-data-mitra" href="#">Data Mitra</a></li>
-            </ul>
-            </li>
-
-            <li class="dropdown"><a href="#"><span>Profile</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-                <li><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Log Out</a></li>
-            </ul>
-            </li>
-            
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav><!-- .navbar -->
-
+<header
+  id="header"
+  class="d-flex align-items-center"
+  style="background-color: #32599c"
+>
+  <div class="container d-flex align-items-center">
+    <div class="d-flex">
+      <h1 class="logo me-auto">
+        <a class="navbar-brand me-3" href="/">
+          <img
+            src="/logo.png"
+            alt="Logo"
+            width="200"
+            height="48"
+            class="d-inline-block align-text-top"
+          />
+        </a>
+      </h1>
+      <a href="/" class="fs-3 fw-bold text-white">| SIBER CSMS</a>
     </div>
+
+    <!-- Uncomment below if you prefer to use an image logo -->
+
+    <nav id="navbar" class="navbar ms-auto">
+      <ul>
+        <li><a class="nav-link scrollto active" href="/dashboard_divisi">Dashboard</a></li>
+        <li class="dropdown"><a href="#"><span>Data Mitra</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+                <li><a  id="menu-data-mitra" href="/data/hseplan_data">Data Mitra-HSE Plan</a></li>
+                <li><a  id="menu-data-mitra" href="/data/psb_data">Data Mitra-PSB </a></li>
+                <li><a  id="menu-data-mitra" href="/data/pa_data">Data Mitra-PA</a></li>
+                <li><a  id="menu-data-mitra" href="/data/pb_data">Data Mitra-PB </a></li>
+            </ul>
+        </li>
+
+        
+        <li><a href="/logout">Log Out</a></li>
+        
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+    <!-- .navbar -->
+  </div>
 </header>
 <!-- End Header -->

@@ -1,25 +1,23 @@
 import { getStorage, ref, list, deleteObject ,uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../config/firebaseConfig.js'; // Sesuaikan dengan path modul Anda
+import PA from '../models/pa.model.js';
 
 const storageFB = getStorage();
 
-import PSB from'../models/psb.model.js';
-
-
-// Fungsi untuk mengunggah file PDF ke Firebase Storage dan menyimpan data teks ke MongoDB
-async function uploadMultiplePDF(files, PSBData) {
+// Function to upload multiple PDFs to Firebase Storage and save text data to MongoDB
+async function uploadMultiplePDF(files, PAData) {
     try {
-        // Sign in ke Firebase jika belum
+        // Sign in to Firebase
         await signInWithEmailAndPassword(auth, process.env.FIREBASE_USER, process.env.FIREBASE_AUTH);
 
-        // Mendapatkan timestamp untuk nama file unik
+        // Get timestamp for unique filenames
         const dateTime = Date.now();
 
-        // Membuat array untuk menyimpan nama file hasil upload
+        // Array to store the names of uploaded files
         const uploadedFileNames = [];
 
-        // Loop melalui setiap file dan mengunggah ke Firebase Storage
+        // Loop through each file and upload to Firebase Storage
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
             const fileName = `pdf/${dateTime}_${i + 1}`;
@@ -31,83 +29,77 @@ async function uploadMultiplePDF(files, PSBData) {
             uploadedFileNames.push(fileName);
         }
 
-        // Menyimpan data PSB ke MongoDB dengan path file yang diunggah
-        const newPSB = new PSB({
-            risk_assessment_id: PSBData.risk_assessment_id,
-            risk_level: PSBData.risk_level,
-            nomor_kontrak: PSBData.nomor_kontrak,
-            nama_pekerjaan: PSBData.nama_pekerjaan,
-            nama_kontraktor: PSBData.nama_kontraktor,
-            // nama_mitra: PSBData.nama_mitra,
-            tanggal_penilaian: PSBData.tanggal_penilaian,
-            // lokasi_kerja: HSEplanData.lokasi_kerja,
-            no_hp: PSBData.no_hp,
-            fungsi_dituju2: PSBData.fungsi_dituju2,
-            alamat_email: PSBData.alamat_email,
+        // Save PA data to MongoDB with the paths of the uploaded files
+        const newPA = new PA({
+            risk_assessment_id: PAData.risk_assessment_id,
+            risk_level: PAData.risk_level,
+            nama_pekerjaan: PAData.nama_pekerjaan,
+            nomor_kontrak: PAData.nomor_kontrak,
+            temuan: PAData.temuan,
+            tanggal_penilaian: PAData.tanggal_penilaian,
+            no_hp: PAData.no_hp,
+            alamat_email: PAData.alamat_email,
+            fungsi_dituju2: PAData.fungsi_dituju2,
             file1: uploadedFileNames[0],
             file2: uploadedFileNames[1],
             file3: uploadedFileNames[2],
             file4: uploadedFileNames[3],
             file5: uploadedFileNames[4],
             file6: uploadedFileNames[5],
-            file7: uploadedFileNames[6], 
+            file7: uploadedFileNames[6],
             file8: uploadedFileNames[7],
-            
-            status_mitra: 'Belum Diproses', // Atau sesuai dengan kebutuhan Anda
+            // status_mitra: 'Belum Diproses', // Or as per your needs
         });
 
-        // Menyimpan data HSEPlan ke MongoDB
-        await newPSB.save();
+        // Save PA data to MongoDB
+        await newPA.save();
 
         return uploadedFileNames;
     } catch (error) {
-        console.error(error); // Mencetak kesalahan ke konsol
+        console.error('Error uploading files and saving PA data:', error);
         throw error;
     }
 }
 
-
-export const postFormPSB = async (req, res) => {
+export const postFormPA = async (req, res) => {
     try {
-        // Validasi apakah semua properti yang diperlukan telah disertakan dalam request body
-        const requiredFields = ['risk_assessment_id', 'risk_level', 'nomor_kontrak', 'nama_pekerjaan', 'nama_kontraktor','tanggal_penilaian', 'no_hp', 'alamat_email', 'fungsi_dituju2'];
+        // Validate required fields in the request body
+        const requiredFields = ['risk_assessment_id', 'risk_level', 'nomor_kontrak', 'nama_pekerjaan', 'tanggal_penilaian', 'temuan', 'no_hp', 'alamat_email', 'fungsi_dituju2'];
         for (const field of requiredFields) {
             if (!req.body[field]) {
                 return res.status(400).send(`Field '${field}' is required`);
             }
         }
 
-        const PSBData = {
+        const PAData = {
             risk_assessment_id: req.body.risk_assessment_id,
             risk_level: req.body.risk_level,
             nomor_kontrak: req.body.nomor_kontrak,
             nama_pekerjaan: req.body.nama_pekerjaan,
-            nama_kontraktor : req.body.nama_kontraktor,
+            temuan: req.body.temuan,
             tanggal_penilaian: req.body.tanggal_penilaian,
             no_hp: req.body.no_hp,
             alamat_email: req.body.alamat_email,
-            // lokasi_kerja: req.body.lokasi_kerja,
             fungsi_dituju2: req.body.fungsi_dituju2,
         };
 
-        // Memanggil fungsi untuk mengunggah file PDF dan menyimpan data HSEPlan
-        const uploadedFileNames = await uploadMultiplePDF(req.files, PSBData);
+        // Call the function to upload PDFs and save PA data
+        const uploadedFileNames = await uploadMultiplePDF(req.files, PAData);
 
-        // Redirect atau berikan respons sesuai kebutuhan Anda
-        res.redirect('/'); // Ganti rute ini sesuai dengan kebutuhan Anda
+        // Redirect or send a response as per your needs
+        res.redirect('/'); // Change this route as per your needs
     } catch (error) {
-        console.error(error);
+        console.error('Error processing form submission:', error);
         res.status(500).send('Internal Server Error');
     }
 };
 
 
-
-export const readPSBData = async (req, res) => {
+export const readPAData = async (req, res) => {
     try {
         // Periksa peran pengguna yang masuk
         const userRole = req.session.divisi_user ? req.session.divisi_user.divisi_name : null;
-        let title = "PSB Data";
+        let title = "PA Data";
         if (!req.session.divisi_user || !req.session.divisi_user.divisi_name) {
             // Jika pengguna belum login, redirect ke halaman login
             return res.redirect('/login_pertamina');
@@ -126,10 +118,10 @@ export const readPSBData = async (req, res) => {
 
         if (userRole in roleMapping) {
             const query = roleMapping[userRole];
-            const readResults = await PSB.find(query);
+            const readResults = await PA.find(query);
 
-            res.render('psb.data.ejs', {
-                dataPSB: readResults,
+            res.render('pa.data.ejs', {
+                dataPA: readResults,
                 title
             });
         } else {
@@ -143,36 +135,37 @@ export const readPSBData = async (req, res) => {
 };
 
 
-export const detailPSBData = async (req, res) => {
+
+export const detailPAData = async (req, res) => {
     try {
         const userRole = req.session.divisi_user ? req.session.divisi_user.divisi_name : null;
-        const psbId = req.params.id;
+        const paId = req.params.id;
 
         // Cari data PSB berdasarkan ID
-        const psbData = await PSB.findById(psbId);
+        const paData = await PA.findById(paId);
 
-        if (!psbData) {
+        if (!paData) {
             return res.status(404).send('Data not found');
         }
 
         // Periksa apakah pengguna memiliki akses ke data tersebut
-        if (userRole === 'HSSE' || userRole === psbData.fungsi_dituju2) {
+        if (userRole === 'HSSE' || userRole === paData.fungsi_dituju2) {
             // Mendapatkan URL unduhan untuk setiap file dari Firebase Storage
             const fileURLs = await Promise.all([
-                getDownloadURL(ref(storageFB, psbData.file1)),
-                getDownloadURL(ref(storageFB, psbData.file2)),
-                getDownloadURL(ref(storageFB, psbData.file3)),
-                getDownloadURL(ref(storageFB, psbData.file4)),
-                getDownloadURL(ref(storageFB, psbData.file5)),
-                getDownloadURL(ref(storageFB, psbData.file6)),
-                getDownloadURL(ref(storageFB, psbData.file7)),
-                getDownloadURL(ref(storageFB, psbData.file8))
+                getDownloadURL(ref(storageFB, paData.file1)),
+                getDownloadURL(ref(storageFB, paData.file2)),
+                getDownloadURL(ref(storageFB, paData.file3)),
+                getDownloadURL(ref(storageFB, paData.file4)),
+                getDownloadURL(ref(storageFB, paData.file5)),
+                getDownloadURL(ref(storageFB, paData.file6)),
+                getDownloadURL(ref(storageFB, paData.file7)),
+                getDownloadURL(ref(storageFB, paData.file8))
                 // Lanjutkan untuk file lainnya...
             ]);
 
-            res.render('psb.detail.ejs', {
-                dataPSB: psbData,
-                title: "PSB Detail Data",
+            res.render('pa.detail.ejs', {
+                dataPA: paData,
+                title: "PA Detail Data",
                 fileURLs,
             });
         } else {
@@ -185,38 +178,37 @@ export const detailPSBData = async (req, res) => {
     }
 };
 
-
-export const editPSBData = async (req, res) => {
+export const editPAData = async (req, res) => {
     try {
         const userRole = req.session.divisi_user ? req.session.divisi_user.divisi_name : null;
         const divisi_user = req.session.divisi_user; 
-        const psbId = req.params.id;
+        const paId = req.params.id;
 
         // Cari data PSB berdasarkan ID
-        const psbData = await PSB.findById(psbId);
+        const paData = await PA.findById(paId);
 
-        if (!psbData) {
+        if (!paData) {
             return res.status(404).send('Data not found');
         }
 
         // Periksa apakah pengguna memiliki akses ke data tersebut
-        if (userRole === 'HSSE' || userRole === psbData.fungsi_dituju2) {
+        if (userRole === 'HSSE' || userRole === paData.fungsi_dituju2) {
             // Mendapatkan URL unduhan untuk setiap file dari Firebase Storage
             const fileURLs = await Promise.all([
-                getDownloadURL(ref(storageFB, psbData.file1)),
-                getDownloadURL(ref(storageFB, psbData.file2)),
-                getDownloadURL(ref(storageFB, psbData.file3)),
-                getDownloadURL(ref(storageFB, psbData.file4)),
-                getDownloadURL(ref(storageFB, psbData.file5)),
-                getDownloadURL(ref(storageFB, psbData.file6)),
-                getDownloadURL(ref(storageFB, psbData.file7)),
-                getDownloadURL(ref(storageFB, psbData.file8))
+                getDownloadURL(ref(storageFB, paData.file1)),
+                getDownloadURL(ref(storageFB, paData.file2)),
+                getDownloadURL(ref(storageFB, paData.file3)),
+                getDownloadURL(ref(storageFB, paData.file4)),
+                getDownloadURL(ref(storageFB, paData.file5)),
+                getDownloadURL(ref(storageFB, paData.file6)),
+                getDownloadURL(ref(storageFB, paData.file7)),
+                getDownloadURL(ref(storageFB, paData.file8))
                 // Lanjutkan untuk file lainnya...
             ]);
 
-            res.render('psb.edit.ejs', {
-                dataPSB: psbData,
-                title: "PSB Edit Data",
+            res.render('pa.edit.ejs', {
+                dataPA: paData,
+                title: "PA Edit Data",
                 fileURLs,
                 divisi_user
             });
@@ -230,26 +222,25 @@ export const editPSBData = async (req, res) => {
     }
 };
 
-
-export const postEditPsbData = async (req, res) => {
+export const postEditPAData = async (req, res) => {
     try {
         const userRole = req.session.divisi_user ? req.session.divisi_user.divisi_name : null;
-        if (userRole === 'HSSE' || userRole === (await PSB.findById(req.params.id)).fungsi_dituju2) {
-            const psbId = req.params.id;
+        if (userRole === 'HSSE' || userRole === (await PA.findById(req.params.id)).fungsi_dituju2) {
+            const paId = req.params.id;
             const { status_mitra, status_mitra2, nilai_total, keterangan_verifikasi } = req.body;
 
-            const psbData = await PSB.findByIdAndUpdate(psbId, {
+            const paData = await PA.findByIdAndUpdate(paId, {
                 status_mitra,
                 status_mitra2,
                 nilai_total,
                 keterangan_verifikasi
             }, { new: true });
 
-            if (!psbData) {
+            if (!paData) {
                 return res.status(404).send('Data not found');
             }
 
-            res.redirect(`/data/psb_data`);
+            res.redirect(`/data/pa_data`);
         } else {
             return res.redirect('/login_pertamina');
         }

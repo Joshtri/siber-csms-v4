@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <title>Document</title> -->
+    <%-include('partials/links'); %>
+</head>
+<body>
+    <%-include('partials/header_divisi'); %>
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+          <div class="container">
+    
+            <div class="d-flex justify-content-between align-items-center">
+              <ol>
+                <li><a href="/"><i class="fa-solid fa-house mx-1"></i>Beranda</a></li>
+                <li>Pengusulan Data Mitra</li>
+              </ol>
+            </div>
+    
+          </div>
+        </section><!-- End Breadcrumbs -->
+
+
+        <!-- ======= Login Us Section ======= -->
+        <section id="contact" class="contact">
+            <div class="container">
+            
+            <div class="section-title">
+                <h2>EDIT DATA MITRA - HSE PLAN</h2>
+            </div>
+
+
+            <div class="mb-3">
+                <a href="/data/hseplan_data/" class="btn btn-sm btn-success"><i class="fa-solid fa-chevron-left fa-beat-fade"></i> Kembali</a>
+                <!-- <a href="/data/update_hse/<%= dataHse.id %>" class="float-end btn btn-sm btn-warning mx-2"><i class="mx-2 fa-solid fa-square-pen fa-beat-fade"></i>Verifikasi Data</a> -->
+            </div>
+
+            <div class="col-lg-12  mx-auto d-flex">
+                <form role="form" action="/data/post_hseplan/<%= dataHse.id %>" method="POST" class="php-email-form"> 
+                    <h3>Data Mitra</h3>
+      
+                    <!-- baris pertama. -->
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="name">Risk Assessment ID</label>
+                            <input disabled class="form-control" value="<%= dataHse.risk_assessment_id %>">
+                        </div>
+
+
+                        <div class="form-group col-md-4">
+                            <label for="name">Risk Level</label>
+                            <input type="text"  class="form-control custom-tooltip" value="<%= dataHse.risk_level %>" disabled>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <!-- Dapatkan tanggal_audit dari server atau sumber data lainnya -->
+                            <% const rawDate = dataHse.tanggal_audit; %>
+        
+                            <!-- Konversi tanggal menggunakan JavaScript -->
+                            <% const formattedDate = new Date(rawDate).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }); %>
+        
+                            <label for="name">Tanggal Penilaian</label>
+                            <input type="text" class="form-control" id="tanggal_audit" value="<%= formattedDate  %>" disabled> 
+                        </div>
+
+                    </div>
+                    <!-- end baris pertama -->
+
+                    <!-- baris kedua. -->
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="name">Nama Pekerjaan</label>
+                            <input type="text" class="form-control" value="<%= dataHse.nama_pekerjaan %>"  disabled>
+                        </div>
+        
+                        <div class="form-group col-md-4">
+                            <label for="name">Nama Mitra</label>
+                            <input type="text" class="form-control" value="<%= dataHse.nama_mitra %>" disabled>
+                        </div>
+                    </div>
+                    <!-- end baris kedua. -->
+
+                    <!-- tanpa row class. -->
+                    <div class="form-group col-md-5">
+                        <label for="name">Lokasi Kerja <span class="fw-bold">(SHU/Regional/Divisi/Department)</span></label>
+                        <input type="text" class="form-control" value="<%= dataHse.lokasi_kerja %>" disabled> 
+                    </div>
+    
+                    <hr>
+
+                    <h3>Kontak Mitra</h3>
+                    <!-- baris keempat. -->
+                    <div class="row d-flex">
+                      <div class="form-group col-md-5">
+                        <label for="name">No Handphone/WA</label>
+                        <input type="text" class="form-control" value="<%= dataHse.no_hp %>" disabled> 
+                      </div>
+                      
+                      <div class="form-group col-md-5">
+                        <label for="name">Alamat Email</label>
+                        <input type="text" class="form-control" value="<%= dataHse.alamat_email %>" disabled> 
+                      </div>
+                    </div>
+                    <!-- end baris keempat -->
+
+                    <hr>
+                    <h3 class="mt-3">Kelengkapan Berkas</h3>
+
+                    <% if (dataHse) { %>
+                        <h2>Detail HSE Plan</h2>
+                        <p>Risk Assessment ID: <%= dataHse.risk_assessment_id %></p>
+                        <!-- Tambahkan informasi lainnya yang Anda ingin tampilkan -->
+                    
+                        <!-- Loop untuk menampilkan informasi file -->
+                        <% for (let i = 1; i <= 8; i++) { %>
+                            <div class="form-group col-lg-6 mt-3">
+                                <label for="file<%= i %>" class="text-capitalize">Berkas - Manajemen Resiko <%= i %></label>
+                                <input type="text" class="form-control" accept=".pdf" name="files" value="<%= dataHse['file' + i] %>" disabled>
+                                <% if (fileURLs[i - 1]) { %>
+                                    <a href="<%= fileURLs[i - 1] %>" target="_blank"><i class="fa-solid fa-eye fa-beat-fade mx-1"></i>Lihat Berkas</a>
+                                    <a href="<%= fileURLs[i - 1] %>" download target="_blank">|<i class="fa-solid fa-file-arrow-down fa-beat-fade mx-1"></i>Download Berkas</a>
+                                <% } else { %>
+                                    <p>Tidak Ada Berkas</p>
+                                <% } %>
+                            </div>
+                        <% } %>
+                    <% } else { %>
+                        <p>Data not found</p>
+                    <% } %>
+
+
+
+                    <hr>
+
+                    <div class="form-group col-lg-4">
+                        <label for="" class="form-label">Progres Mitra : </label>
+                        <% if (dataHse.status_mitra === "Belum Diproses") { %>
+                            <button type="button" class="btn btn-sm btn-status-warm custom-tooltip" data-bs-title="Verifikasi : Diproses" data-bs-toggle="tooltip">
+                                <i class="fa-solid fa-spinner fa-spin"></i>
+                            </button>
+                            
+                        <% }else if (dataHse.status_mitra === "Diterima") { %>
+                            <button type="button" class="btn btn-sm btn-status-green custom-tooltip" data-bs-title="Verifikasi : Lulus" data-bs-toggle="tooltip">
+                                <i class="fa-solid fa-check"></i>
+                            </button>
+                        <% } else if(dataHse.status_mitra === "Ditolak") { %>
+                            <button type="button" class="btn btn-sm btn-status-red custom-tooltip" data-bs-title="Verifikasi : Tidak Lulus" data-bs-toggle="tooltip">
+                                <i class="fa-solid fa-square-xmark"></i>
+                            </button>
+                        <% } %>
+                    
+    
+                        <!-- <button type="button" class="btn btn-sm btn-status-green custom-tooltip" data-bs-title="Verifikasi : Diterima" data-bs-toggle="tooltip"><i class="fa-solid fa-square-check"></i></button> -->
+                        <!-- <button type="button" class="btn btn-sm btn-status-warm custom-tooltip" data-bs-title="Verifikasi : Diproses" data-bs-toggle="tooltip"><i class="fa-solid fa-spinner fa-spin"></i></button> -->
+                    
+
+                        <div class="row d-flex">
+                            <div class="form-group col-md-6 mt-3">  
+                            <label for="" class="form-label">Ubah Progres Mitra:</label>
+                            <select class="form-control" name="status_mitra" id="status_mitra">
+                                <option value="Belum Diproses">Belum Diproses</option>
+                                <option value="Ditolak">Tidak Lulus</option>
+                                <option value="Diterima">Lulus</option>
+                            </select>
+                            </div>
+        
+                            <div class="form-group col-md-6 mt-3">
+                            <label for="name">Penilaian</label>
+                            <input type="text" class="form-control" name="nilai_total" value="<%= dataHse.nilai_total %>" oninput="validateInput(this)">
+                            <div class="form-text">*) Nilai 0-100, </div>
+                            <div class="form-text">*) Contoh : 33.55</div>
+                            </div>
+                            
+                            <script>
+                            function validateInput(input) {
+                            // Hapus karakter non-angka dan pecahan
+                            input.value = input.value.replace(/[^\d.]/g, '');
+                            
+                            // Batasi nilai antara 0 dan 100
+                            if (input.value > 100) {
+                                input.value = 100;
+                            }
+                            }
+                            </script>       
+                        </div>
+                        
+                        <div class="form-group col-md-12 mt-3">
+                            <label for="name">Keterangan Verifikasi</label>
+                            <textarea class="form-control" rows="5" cols="5" name="keterangan_verifikasi" aria-label="With textarea"> <%= dataHse.keterangan_verifikasi %></textarea>
+                            <div class="form-text">*) Berikan keterangan jika ada</div>
+                        </div>
+                    
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-submit ">Perbarui Data</button>
+                    </div>
+                    
+                </form>
+            </div>
+
+            
+        </section>
+    
+    </main>
+    <script src="/js/tooltipCustom.js"></script>
+
+</body>
+</html>

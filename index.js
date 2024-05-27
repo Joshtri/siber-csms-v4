@@ -72,9 +72,9 @@ app.set('view engine', 'ejs');
 // eslint-disable-next-line no-undef
 app.use(express.static(path.join(process.cwd(), 'public')));
 
-// Apply 10-second delay to all routes for testing purposes
+// Apply delay to all routes for testing purposes
 app.use(async (req, res, next) => {
-    await delay(10000); // Delay of 10 seconds
+    await delay(5000); // Delay of 5 seconds
     next();
 });
 

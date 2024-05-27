@@ -44,7 +44,7 @@
             <div class="form-floating d-flex">
               <input type="password" class="form-control" id="password" name="password" oninput="checkPINLength()" maxlength="11" placeholder="Password" >
               <label for="floatingPassword">PIN</label>
-              <button type="button" class="btn btn-outline-light" onclick="togglePasswordVisibility()"><i class="text-dark bi bi-eye-slash"></i></button>
+              <button type="button" class="btn btn-outline-light" onclick="togglePasswordVisibility()"><i class="text-dark fas fa-eye-slash"></i></button>
             </div>
             <div class="form-text ms-2" id="basic-addon4">*) Masukkan PIN anda</div>
 
@@ -78,11 +78,10 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-<!-- JavaScript to show the modal automatically -->
-<script>
-$(document).ready(function() {
-  $('#greetingModal').modal('show');
-});
-</script>
+
+<script src="/js/notificationToastr.js"></script>
+<script src="/js/iconPswd.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

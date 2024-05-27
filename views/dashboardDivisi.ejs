@@ -42,7 +42,7 @@
                   <h5>Pengusulan :</h5>
                   <hr style="border-bottom: 1px solid #eee;">
                   
-                  <h5 class="text-center"><%=  %></h5>
+                  <h5 class="text-center">5</h5>
                   <p class="small fw-light" data-bs-toggle="modal" data-bs-target="#detailPengusul">Lihat Detail<i class="mt-3 mx-1 fa-solid fa-up-right-from-square fa-bounce"></i></p>
                   </div>
                 </div>
@@ -52,7 +52,7 @@
                     <h5>Verifikasi User :</h5>
                     <hr style="border-bottom: 1px solid #eee;">
                     
-                    <h5 class="text-center"><%=  %></h5>
+                    <h5 class="text-center">6</h5>
                     <p class="small fw-light mt-3" onmouseover="showCardVerifikasiUser()" onmouseout="hideCardVerifikasiUser()">Lihat Detail<i class="mx-1 fa-solid fa-up-right-from-square fa-bounce"></i></p>
                   </div>
     
@@ -77,7 +77,7 @@
                   <h5>Verifikasi HSSE :</h5>
                   <hr style="border-bottom: 1px solid #eee;">
                   
-                  <h5 class="text-center pb-5"><%=  %></h5>
+                  <h5 class="text-center">4</h5>
                   <p class="small fw-light"><i class=" hidden mt-3 mx-1 fa-solid fa-up-right-from-square fa-bounce"></i></p>
                   </div>
                 </div>
@@ -87,7 +87,7 @@
                   <h5>Usulan di Tolak :</h5>
                   <hr style="border-bottom: 1px solid #eee;">
                   
-                  <h5 class="text-center pb-5"><%=  %></h5>
+                  <h5 class="text-center">5</h5>
                   
                   <p class="small fw-light"><i class=" mt-3 mx-1 fa-solid fa-up-right-from-square fa-bounce hidden"></i></p>
                   </div>
@@ -128,8 +128,8 @@
                   <h5>HSE PLAN :</h5>
                   <hr style="border-bottom: 1px solid #eee;">
                   
-                  <h3 class="text-center custom-tooltip" data-bs-toggle="tooltip" data-bs-title="Total yang mengusulkan berkas" data-bs-placement="bottom"><%=  %></h3>
-                  <a href="/data/hse-data">
+                  <h3 class="text-center custom-tooltip" data-bs-toggle="tooltip" data-bs-title="Total yang mengusulkan berkas" data-bs-placement="bottom"><%= totalHSEPLAN  %></h3>
+                  <a href="/data/hseplan_data">
                     <p class="small fw-light custom-tooltip" data-bs-toggle="tooltip" data-bs-title="Buka Table HSE" data-bs-placement="left">Data HSE<i class="mx-1 fa-solid fa-up-right-from-square fa-bounce"></i></p>
                   </a>
     
@@ -157,8 +157,8 @@
                   <h5>PSB :</h5>
                   <hr style="border-bottom: 1px solid #eee;">
                   
-                  <h3 class="text-center custom-tooltip" data-bs-toggle="tooltip" data-bs-title="Total yang mengusulkan berkas" data-bs-placement="bottom"><%=  %></h3>
-                  <a href="/data/psb-data">
+                  <h3 class="text-center custom-tooltip" data-bs-toggle="tooltip" data-bs-title="Total yang mengusulkan berkas" data-bs-placement="bottom"><%= totalPSB  %></h3>
+                  <a href="/data/psb_data">
                     <p class="small fw-light custom-tooltip" data-bs-toggle="tooltip" data-bs-title="Buka Table PSB" data-bs-placement="left">Data PSB<i class="mx-1 fa-solid fa-up-right-from-square fa-bounce"></i></p>
                   </a>
     
@@ -183,8 +183,8 @@
                   <h5>PB :</h5>
                   <hr style="border-bottom: 1px solid #d17777;">
                   
-                  <h3 class="text-center custom-tooltip" data-bs-toggle="tooltip" data-bs-title="Total yang mengusulkan berkas" data-bs-placement="bottom"><%=  %></h3>
-                  <a href="/data/pb-data">
+                  <h3 class="text-center custom-tooltip" data-bs-toggle="tooltip" data-bs-title="Total yang mengusulkan berkas" data-bs-placement="bottom"><%= totalPB  %></h3>
+                  <a href="/data/pb_data">
                     <p class="small fw-light custom-tooltip" data-bs-toggle="tooltip" data-bs-title="Buka Table PB" data-bs-placement="left">Data PB<i class="mx-1 fa-solid fa-up-right-from-square fa-bounce"></i></p>
                   </a>
     
@@ -209,8 +209,8 @@
                   <h5>PA :</h5>
                   <hr style="border-bottom: 1px solid #eee;">
                   
-                  <h3 class="text-center custom-tooltip" data-bs-toggle="tooltip" data-bs-title="Total yang mengusulkan berkas" data-bs-placement="bottom"><%=  %></h3>
-                  <a href="/data/pa-data">
+                  <h3 class="text-center custom-tooltip" data-bs-toggle="tooltip" data-bs-title="Total yang mengusulkan berkas" data-bs-placement="bottom"><%=  totalPA %></h3>
+                  <a href="/data/pa_data">
                     <p class="small fw-light custom-tooltip" data-bs-toggle="tooltip" data-bs-title="Buka Table PA" data-bs-placement="left">Data PA<i class="mx-1 fa-solid fa-up-right-from-square fa-bounce"></i></p>
                   </a>
     
@@ -238,27 +238,7 @@
         </div>
     
         <!-- END MENU MITRA -->
-    
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-              <div class="modal-content custom-modal-content">
-                  <div class="modal-header custom-modal-header">
-                      <h5 class="modal-title custom-modal-title" id="exampleModalLabel">Konfirmasi</h5>
-                      <button type="button" class="btn-close custom-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body custom-modal-body">
-                      <!-- Modal Content Goes Here -->
-                      <p>Apakah Anda ingin keluar dari dashboard Pertamina?</p>
-                  </div>
-                  <div class="modal-footer custom-modal-footer">
-                      <a href="/logout" class="btn btn-primary">Ya</a>
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                  </div>
-              </div>
-          </div>
-      </div>
-    
-      
+              
         <!-- Modal -->
         <div class="modal fade" id="detailPengusul" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
@@ -300,6 +280,8 @@
           </div>
         </div>
     </main><!-- End #main -->
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/cardShow.js"></script>
 
 </body>
 </html>

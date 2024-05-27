@@ -86,6 +86,7 @@ export const postFormHSEPlan = async (req, res) => {
 
         // Memanggil fungsi untuk mengunggah file PDF dan menyimpan data HSEPlan
         const uploadedFileNames = await uploadMultiplePDF(req.files, hsePlanData);
+        await req.flash('successUpHse', 'Kelengkapan Berkas HSE PLAN berhasil di upload');
 
         // Redirect atau berikan respons sesuai kebutuhan Anda
         res.redirect('/'); // Ganti rute ini sesuai dengan kebutuhan Anda
@@ -105,9 +106,14 @@ export const readHSEData = async (req, res) => {
         if (userRole === 'HSSE') {
             const hseData = await HSEPlan.find();
 
+
+            //mendapatkan pesan flash utkHSE
+            const messageSuccessVerify = await req.flash('successVerifyHse');
+
             res.render('hseplan.data.ejs', {
                 dataHse: hseData,
-                title
+                title,
+                messageSuccessVerify
             });
         } else {
             // Jika peran pengguna bukan 'HSSE', kembalikan ke halaman login
@@ -227,6 +233,7 @@ export const postEditHSEData = async (req, res) => {
             if (!hseData) {
                 return res.status(404).send('Data not found');
             }
+            await req.flash('successVerifyHse', 'Proses Verifikasi Kelengkapan Berkas HSE PLAN berhasil!');
 
             res.redirect(`/data/hseplan_data`);
         } else {

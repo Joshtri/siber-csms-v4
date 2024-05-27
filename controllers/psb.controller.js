@@ -92,7 +92,7 @@ export const postFormPSB = async (req, res) => {
 
         // Memanggil fungsi untuk mengunggah file PDF dan menyimpan data HSEPlan
         const uploadedFileNames = await uploadMultiplePDF(req.files, PSBData);
-
+        await req.flash('successUpPsb', 'Kelengkapan Berkas PSB berhasil di upload');
         // Redirect atau berikan respons sesuai kebutuhan Anda
         res.redirect('/'); // Ganti rute ini sesuai dengan kebutuhan Anda
     } catch (error) {
@@ -107,12 +107,14 @@ export const readPSBData = async (req, res) => {
     try {
         // Periksa peran pengguna yang masuk
         const userRole = req.session.divisi_user ? req.session.divisi_user.divisi_name : null;
+        const messageSuccessVerify = await req.flash('successVerifyPsb');
         let title = "PSB Data";
         if (!req.session.divisi_user || !req.session.divisi_user.divisi_name) {
             // Jika pengguna belum login, redirect ke halaman login
             return res.redirect('/login_pertamina');
         }
-        
+
+
 
         const roleMapping = {
             'HSSE': {},
@@ -130,7 +132,8 @@ export const readPSBData = async (req, res) => {
 
             res.render('psb.data.ejs', {
                 dataPSB: readResults,
-                title
+                title,
+                messageSuccessVerify
             });
         } else {
             // Tampilkan pesan atau lakukan sesuatu jika pengguna tidak memiliki peran yang sesuai
@@ -141,7 +144,6 @@ export const readPSBData = async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 };
-
 
 export const detailPSBData = async (req, res) => {
     try {
@@ -170,7 +172,7 @@ export const detailPSBData = async (req, res) => {
                 // Lanjutkan untuk file lainnya...
             ]);
 
-            res.render('psb.detail.ejs', {
+            return res.render('psb.detail.ejs', {
                 dataPSB: psbData,
                 title: "PSB Detail Data",
                 fileURLs,

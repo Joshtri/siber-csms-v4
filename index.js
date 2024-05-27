@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import { fileURLToPath } from 'url';
 import session from 'express-session';
 import cors from 'cors';
+import flash from 'connect-flash';
 import path from 'path';
 import redis from 'redis';
 import RedisStore from 'connect-redis';
@@ -52,7 +53,8 @@ app.use(
     })
 );
 
-
+// Initialize connect-flash
+app.use(flash());
 connectDB();
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -80,7 +82,7 @@ app.use(async (req, res, next) => {
 
 app.use('/', mainRoute, dashboardRoute);
 app.use('/data', hseplanRoute, psbRoute,paRoute,pbRoute);
-// Tentukan lokasi folder views
+
 
 
 // Tentukan lokasi folder views

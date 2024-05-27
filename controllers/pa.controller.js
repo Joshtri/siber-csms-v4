@@ -85,6 +85,7 @@ export const postFormPA = async (req, res) => {
 
         // Call the function to upload PDFs and save PA data
         const uploadedFileNames = await uploadMultiplePDF(req.files, PAData);
+        await req.flash('successUpPa', 'Kelengkapan Berkas PA berhasil di upload');
 
         // Redirect or send a response as per your needs
         res.redirect('/'); // Change this route as per your needs
@@ -104,7 +105,8 @@ export const readPAData = async (req, res) => {
             // Jika pengguna belum login, redirect ke halaman login
             return res.redirect('/login_pertamina');
         }
-        
+        const messageSuccessVerify = await req.flash('successVerifyPa');
+
 
         const roleMapping = {
             'HSSE': {},
@@ -122,7 +124,8 @@ export const readPAData = async (req, res) => {
 
             res.render('pa.data.ejs', {
                 dataPA: readResults,
-                title
+                title,
+                messageSuccessVerify
             });
         } else {
             // Tampilkan pesan atau lakukan sesuatu jika pengguna tidak memiliki peran yang sesuai

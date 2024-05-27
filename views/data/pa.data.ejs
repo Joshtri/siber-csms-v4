@@ -33,6 +33,12 @@
 
             <!-- *KOTAK KHUSUS dashboard -->
     <section id="portfolio-details" class="portfolio-details ">
+        <% messageSuccessVerify.forEach(element => { %>
+            <div class="alert alert-success alert-dismissible fade show col-lg-9 mx-auto" role="alert">
+              <%= element %>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <% }) %>
         <div class="container">
             <div class="search-box float-end mb-2">
                 <input type="text" placeholder="Search..." id="search-bar">
@@ -120,5 +126,7 @@
         </div>
     </section>
     <!-- END KOTAK KHUSUS DASHBOARD -->
+    <script src="/js/tooltipCustom.js"></script>
+    <script src="/js/liveSearchBar.js"></script>
 </body>
 </html>

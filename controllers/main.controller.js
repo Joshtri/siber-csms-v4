@@ -19,8 +19,19 @@ const mainController = {
     async formMitraPage (req,res){
         const title = "Form Pengisian Mitra | SIBER CSMS";
 
+
+        const messageSuccesHse = await req.flash('successUpHse');
+        const messageSuccesPsb = await req.flash('successUpPsb');
+        const messageSuccesPb = await req.flash('successUpPb');
+        const messageSuccesPa = await req.flash('successUpPa');
+
         res.render('form_mitra',{
-            title
+            title,
+            messageSuccesHse,
+            messageSuccesPsb,
+            messageSuccesPb,
+            messageSuccesPa
+
         });
     }
 

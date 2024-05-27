@@ -65,6 +65,36 @@
     <!-- ======= Login Us Section ======= -->
     <section id="contact" class="contact">
         <div class="container">
+
+          <% messageSuccesHse.forEach(element => { %>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <%= element %>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          <% }) %>
+
+          <% messageSuccesPsb.forEach(element => { %>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <%= element %>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          <% }) %>
+
+          <% messageSuccesPa.forEach(element => { %>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <%= element %>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          <% }) %>
+
+
+          <% messageSuccesPb.forEach(element => { %>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <%= element %>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          <% }) %>
+
           <div class="section-title">
             <h2>PENGUSULAN DATA MITRA</h2>
           </div>
@@ -134,7 +164,9 @@
       </section><!-- End About Us Section -->
 
 
-      <script src="/js/customTooltip.js"></script>
+    <script src="/js/customTooltip.js"></script>
     <script src="/js/formMitra.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

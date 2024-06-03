@@ -92,7 +92,7 @@ export const postFormPB = async (req, res) => {
 
         await req.flash('successUpPb', 'Kelengkapan Berkas PB berhasil di upload');
         // Redirect or send a response as per your needs
-        res.redirect('/'); // Change this route as per your needs
+        res.redirect('/form_mitra'); // Change this route as per your needs
     } catch (error) {
         console.error('Error processing form submission:', error);
         res.status(500).send('Internal Server Error');

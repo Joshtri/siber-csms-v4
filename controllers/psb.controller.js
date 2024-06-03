@@ -94,7 +94,7 @@ export const postFormPSB = async (req, res) => {
         const uploadedFileNames = await uploadMultiplePDF(req.files, PSBData);
         await req.flash('successUpPsb', 'Kelengkapan Berkas PSB berhasil di upload');
         // Redirect atau berikan respons sesuai kebutuhan Anda
-        res.redirect('/'); // Ganti rute ini sesuai dengan kebutuhan Anda
+        res.redirect('/form_mitra');
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Server Error');

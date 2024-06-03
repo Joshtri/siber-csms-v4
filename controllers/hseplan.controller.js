@@ -89,7 +89,7 @@ export const postFormHSEPlan = async (req, res) => {
         await req.flash('successUpHse', 'Kelengkapan Berkas HSE PLAN berhasil di upload');
 
         // Redirect atau berikan respons sesuai kebutuhan Anda
-        res.redirect('/'); // Ganti rute ini sesuai dengan kebutuhan Anda
+        res.redirect('/form_mitra'); // Ganti rute ini sesuai dengan kebutuhan Anda
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Server Error');

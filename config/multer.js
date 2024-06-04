@@ -3,13 +3,13 @@ import path from "path";
 
 const storage = multer.memoryStorage();
 
-const uploadMultiplePDF = multer({
+const uploadSinglePDF = multer({
   storage: storage,
   limits: { fileSize: 10000000 }, // 3 MB
   fileFilter: function (req, file, cb) {
     checkFileType(file, cb, 'pdf');
   }
-}).array("files", 8); // Upload 8 files
+}).array("files"); // Upload 8 files
 
 // Check file Type
 function checkFileType(file, cb, fileType) {
@@ -24,4 +24,4 @@ function checkFileType(file, cb, fileType) {
   }
 }
 
-export { uploadMultiplePDF };
+export { uploadSinglePDF };

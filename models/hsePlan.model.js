@@ -56,34 +56,34 @@ const HSEPlanSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  file2: {
-    type: String,
-    required: true,
-  },
-  file3: {
-    type: String,
-    required: true,
-  },
-  file4: {
-    type: String,
-    required: true,
-  },
-  file5: {
-    type: String,
-    required: true,
-  },
-  file6: {
-    type: String,
-    required: true,
-  },
-  file7: {
-    type: String,
-    required: true,
-  },
-  file8: {
-    type: String,
-    required: true,
-  },
+  // file2: {
+  //   type: String,
+  //   required: true,
+  // },
+  // file3: {
+  //   type: String,
+  //   required: true,
+  // },
+  // file4: {
+  //   type: String,
+  //   required: true,
+  // },
+  // file5: {
+  //   type: String,
+  //   required: true,
+  // },
+  // file6: {
+  //   type: String,
+  //   required: true,
+  // },
+  // file7: {
+  //   type: String,
+  //   required: true,
+  // },
+  // file8: {
+  //   type: String,
+  //   required: true,
+  // },
 });
 
 const HSEPlan = mongoose.model('HSEPlan', HSEPlanSchema);

@@ -41,13 +41,13 @@ async function uploadMultiplePDF(files, HSEplanData) {
             no_hp: HSEplanData.no_hp,
             alamat_email: HSEplanData.alamat_email,
             file1: uploadedFileNames[0],
-            file2: uploadedFileNames[1],
-            file3: uploadedFileNames[2],
-            file4: uploadedFileNames[3],
-            file5: uploadedFileNames[4],
-            file6: uploadedFileNames[5],
-            file7: uploadedFileNames[6],
-            file8: uploadedFileNames[7],
+            // file2: uploadedFileNames[1],
+            // file3: uploadedFileNames[2],
+            // file4: uploadedFileNames[3],
+            // file5: uploadedFileNames[4],
+            // file6: uploadedFileNames[5],
+            // file7: uploadedFileNames[6],
+            // file8: uploadedFileNames[7],
             status_mitra: 'Belum Diproses', // Atau sesuai dengan kebutuhan Anda
         });
 
@@ -145,13 +145,13 @@ export const detailHSEData = async (req, res) => {
             // Mendapatkan URL unduhan untuk setiap file dari Firebase Storage
             const fileURLs = await Promise.all([
                 getDownloadURL(ref(storageFB, hseData.file1)),
-                getDownloadURL(ref(storageFB, hseData.file2)),
-                getDownloadURL(ref(storageFB, hseData.file3)),
-                getDownloadURL(ref(storageFB, hseData.file4)),
-                getDownloadURL(ref(storageFB, hseData.file5)),
-                getDownloadURL(ref(storageFB, hseData.file6)),
-                getDownloadURL(ref(storageFB, hseData.file7)),
-                getDownloadURL(ref(storageFB, hseData.file8))
+                // getDownloadURL(ref(storageFB, hseData.file2)),
+                // getDownloadURL(ref(storageFB, hseData.file3)),
+                // getDownloadURL(ref(storageFB, hseData.file4)),
+                // getDownloadURL(ref(storageFB, hseData.file5)),
+                // getDownloadURL(ref(storageFB, hseData.file6)),
+                // getDownloadURL(ref(storageFB, hseData.file7)),
+                // getDownloadURL(ref(storageFB, hseData.file8))
                 // Lanjutkan untuk file lainnya...
             ]);
 

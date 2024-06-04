@@ -41,13 +41,13 @@ async function uploadMultiplePDF(files, PAData) {
             alamat_email: PAData.alamat_email,
             fungsi_dituju2: PAData.fungsi_dituju2,
             file1: uploadedFileNames[0],
-            file2: uploadedFileNames[1],
-            file3: uploadedFileNames[2],
-            file4: uploadedFileNames[3],
-            file5: uploadedFileNames[4],
-            file6: uploadedFileNames[5],
-            file7: uploadedFileNames[6],
-            file8: uploadedFileNames[7],
+            // file2: uploadedFileNames[1],
+            // file3: uploadedFileNames[2],
+            // file4: uploadedFileNames[3],
+            // file5: uploadedFileNames[4],
+            // file6: uploadedFileNames[5],
+            // file7: uploadedFileNames[6],
+            // file8: uploadedFileNames[7],
             // status_mitra: 'Belum Diproses', // Or as per your needs
         });
 
@@ -156,13 +156,13 @@ export const detailPAData = async (req, res) => {
             // Mendapatkan URL unduhan untuk setiap file dari Firebase Storage
             const fileURLs = await Promise.all([
                 getDownloadURL(ref(storageFB, paData.file1)),
-                getDownloadURL(ref(storageFB, paData.file2)),
-                getDownloadURL(ref(storageFB, paData.file3)),
-                getDownloadURL(ref(storageFB, paData.file4)),
-                getDownloadURL(ref(storageFB, paData.file5)),
-                getDownloadURL(ref(storageFB, paData.file6)),
-                getDownloadURL(ref(storageFB, paData.file7)),
-                getDownloadURL(ref(storageFB, paData.file8))
+                // getDownloadURL(ref(storageFB, paData.file2)),
+                // getDownloadURL(ref(storageFB, paData.file3)),
+                // getDownloadURL(ref(storageFB, paData.file4)),
+                // getDownloadURL(ref(storageFB, paData.file5)),
+                // getDownloadURL(ref(storageFB, paData.file6)),
+                // getDownloadURL(ref(storageFB, paData.file7)),
+                // getDownloadURL(ref(storageFB, paData.file8))
                 // Lanjutkan untuk file lainnya...
             ]);
 

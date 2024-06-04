@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 import mainController from '../controllers/main.controller.js';
-import { uploadMultiplePDF } from '../config/multer.js';
+import { uploadSinglePDF } from '../config/multer.js';
 import { postFormHSEPlan } from '../controllers/hseplan.controller.js';
 import  {createPINPage, CreatingPIN, loginUser} from '../controllers/divisi.controller.js';
 import { postFormPSB } from '../controllers/psb.controller.js';
@@ -16,10 +16,10 @@ router.get('/form_mitra', mainController.formMitraPage);
 
 
 //MITRA POST Data BERKAS.
-router.post('/postHSEPlan',uploadMultiplePDF ,postFormHSEPlan);
-router.post('/postPSB', uploadMultiplePDF, postFormPSB);
-router.post('/postPA',uploadMultiplePDF ,postFormPA);
-router.post('/postPB',uploadMultiplePDF ,postFormPB);
+router.post('/postHSEPlan',uploadSinglePDF ,postFormHSEPlan);
+router.post('/postPSB', uploadSinglePDF, postFormPSB);
+router.post('/postPA',uploadSinglePDF ,postFormPA);
+router.post('/postPB',uploadSinglePDF ,postFormPB);
 
 router.get('/create_user', createPINPage);
 router.post('/api/create_user', CreatingPIN);

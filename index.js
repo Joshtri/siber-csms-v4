@@ -3,7 +3,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { fileURLToPath } from 'url';
 import session from 'express-session';
-import cors from 'cors';
+
 import flash from 'connect-flash';
 import path from 'path';
 import redis from 'redis';

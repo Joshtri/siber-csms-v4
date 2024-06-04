@@ -156,14 +156,6 @@ export const detailPAData = async (req, res) => {
             // Mendapatkan URL unduhan untuk setiap file dari Firebase Storage
             const fileURLs = await Promise.all([
                 getDownloadURL(ref(storageFB, paData.file1)),
-                // getDownloadURL(ref(storageFB, paData.file2)),
-                // getDownloadURL(ref(storageFB, paData.file3)),
-                // getDownloadURL(ref(storageFB, paData.file4)),
-                // getDownloadURL(ref(storageFB, paData.file5)),
-                // getDownloadURL(ref(storageFB, paData.file6)),
-                // getDownloadURL(ref(storageFB, paData.file7)),
-                // getDownloadURL(ref(storageFB, paData.file8))
-                // Lanjutkan untuk file lainnya...
             ]);
 
             res.render('pa.detail.ejs', {
@@ -199,13 +191,13 @@ export const editPAData = async (req, res) => {
             // Mendapatkan URL unduhan untuk setiap file dari Firebase Storage
             const fileURLs = await Promise.all([
                 getDownloadURL(ref(storageFB, paData.file1)),
-                getDownloadURL(ref(storageFB, paData.file2)),
-                getDownloadURL(ref(storageFB, paData.file3)),
-                getDownloadURL(ref(storageFB, paData.file4)),
-                getDownloadURL(ref(storageFB, paData.file5)),
-                getDownloadURL(ref(storageFB, paData.file6)),
-                getDownloadURL(ref(storageFB, paData.file7)),
-                getDownloadURL(ref(storageFB, paData.file8))
+                // getDownloadURL(ref(storageFB, paData.file2)),
+                // getDownloadURL(ref(storageFB, paData.file3)),
+                // getDownloadURL(ref(storageFB, paData.file4)),
+                // getDownloadURL(ref(storageFB, paData.file5)),
+                // getDownloadURL(ref(storageFB, paData.file6)),
+                // getDownloadURL(ref(storageFB, paData.file7)),
+                // getDownloadURL(ref(storageFB, paData.file8))
                 // Lanjutkan untuk file lainnya...
             ]);
 

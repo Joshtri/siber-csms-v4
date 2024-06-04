@@ -10,6 +10,11 @@ const PASchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  nama_kontraktor: {
+    type: String,
+    // required: true,
+  },
+
   nomor_kontrak: {
     type: String,
     required: true,

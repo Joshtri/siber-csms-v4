@@ -28,10 +28,10 @@ const PBSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  // nama_pekerjaan: {
-  //   type: String,
-  //   required: true,
-  // },
+  nama_pekerjaan: {
+    type: String,
+    // required: true,
+  },
   nama_kontraktor: {
     type: String,
     required: true,

@@ -191,13 +191,13 @@ export const editHSEData = async (req, res) => {
             // Mendapatkan URL unduhan untuk setiap file dari Firebase Storage
             const fileURLs = await Promise.all([
                 getDownloadURL(ref(storageFB, hseData.file1)),
-                getDownloadURL(ref(storageFB, hseData.file2)),
-                getDownloadURL(ref(storageFB, hseData.file3)),
-                getDownloadURL(ref(storageFB, hseData.file4)),
-                getDownloadURL(ref(storageFB, hseData.file5)),
-                getDownloadURL(ref(storageFB, hseData.file6)),
-                getDownloadURL(ref(storageFB, hseData.file7)),
-                getDownloadURL(ref(storageFB, hseData.file8))
+                // getDownloadURL(ref(storageFB, hseData.file2)),
+                // getDownloadURL(ref(storageFB, hseData.file3)),
+                // getDownloadURL(ref(storageFB, hseData.file4)),
+                // getDownloadURL(ref(storageFB, hseData.file5)),
+                // getDownloadURL(ref(storageFB, hseData.file6)),
+                // getDownloadURL(ref(storageFB, hseData.file7)),
+                // getDownloadURL(ref(storageFB, hseData.file8))
                 // Lanjutkan untuk file lainnya...
             ]);
 

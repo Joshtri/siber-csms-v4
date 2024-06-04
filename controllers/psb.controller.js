@@ -206,13 +206,13 @@ export const editPSBData = async (req, res) => {
             // Mendapatkan URL unduhan untuk setiap file dari Firebase Storage
             const fileURLs = await Promise.all([
                 getDownloadURL(ref(storageFB, psbData.file1)),
-                getDownloadURL(ref(storageFB, psbData.file2)),
-                getDownloadURL(ref(storageFB, psbData.file3)),
-                getDownloadURL(ref(storageFB, psbData.file4)),
-                getDownloadURL(ref(storageFB, psbData.file5)),
-                getDownloadURL(ref(storageFB, psbData.file6)),
-                getDownloadURL(ref(storageFB, psbData.file7)),
-                getDownloadURL(ref(storageFB, psbData.file8))
+                // getDownloadURL(ref(storageFB, psbData.file2)),
+                // getDownloadURL(ref(storageFB, psbData.file3)),
+                // getDownloadURL(ref(storageFB, psbData.file4)),
+                // getDownloadURL(ref(storageFB, psbData.file5)),
+                // getDownloadURL(ref(storageFB, psbData.file6)),
+                // getDownloadURL(ref(storageFB, psbData.file7)),
+                // getDownloadURL(ref(storageFB, psbData.file8))
                 // Lanjutkan untuk file lainnya...
             ]);
 

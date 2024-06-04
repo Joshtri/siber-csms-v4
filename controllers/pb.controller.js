@@ -40,6 +40,7 @@ async function uploadMultiplePDF(files, PBData) {
             temuan: PBData.temuan,
             kategori_pb:PBData.kategori_pb,
             no_hp: PBData.no_hp,
+            nama_pekerjaan:PBData.nama_pekerjaan,
             alamat_email: PBData.alamat_email,
             fungsi_dituju2: PBData.fungsi_dituju2,
             file1: uploadedFileNames[0],
@@ -79,6 +80,7 @@ export const postFormPB = async (req, res) => {
             risk_level: req.body.risk_level,
             nomor_kontrak: req.body.nomor_kontrak,
             nama_kontraktor: req.body.nama_kontraktor,
+            nama_pekerjaan:req.body.nama_pekerjaan,
             kategori_pb: req.body.kategori_pb,
             temuan: req.body.temuan,
             tanggal_penilaian: req.body.tanggal_penilaian,
@@ -205,13 +207,13 @@ export const editPBData = async (req, res) => {
             // Mendapatkan URL unduhan untuk setiap file dari Firebase Storage
             const fileURLs = await Promise.all([
                 getDownloadURL(ref(storageFB, pbData.file1)),
-                getDownloadURL(ref(storageFB, pbData.file2)),
-                getDownloadURL(ref(storageFB, pbData.file3)),
-                getDownloadURL(ref(storageFB, pbData.file4)),
-                getDownloadURL(ref(storageFB, pbData.file5)),
-                getDownloadURL(ref(storageFB, pbData.file6)),
-                getDownloadURL(ref(storageFB, pbData.file7)),
-                getDownloadURL(ref(storageFB, pbData.file8))
+                // getDownloadURL(ref(storageFB, pbData.file2)),
+                // getDownloadURL(ref(storageFB, pbData.file3)),
+                // getDownloadURL(ref(storageFB, pbData.file4)),
+                // getDownloadURL(ref(storageFB, pbData.file5)),
+                // getDownloadURL(ref(storageFB, pbData.file6)),
+                // getDownloadURL(ref(storageFB, pbData.file7)),
+                // getDownloadURL(ref(storageFB, pbData.file8))
                 // Lanjutkan untuk file lainnya...
             ]);
 

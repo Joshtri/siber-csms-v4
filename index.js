@@ -76,7 +76,7 @@ app.use(express.static(path.join(process.cwd(), 'public')));
 
 // Apply delay to all routes for testing purposes
 app.use(async (req, res, next) => {
-    await delay(5000); // Delay of 5 seconds
+    await delay(); // Delay of 5 seconds
     next();
 });
 

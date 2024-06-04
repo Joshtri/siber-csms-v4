@@ -3,7 +3,7 @@
 const protect = (req, res, next) => {
     if (req.session.divisi_user) {
         // Tampilkan data admin dari session di console
-        console.log('Data Divisi:', req.session.divisi_user);
+        // console.log('Data Divisi:', req.session.divisi_user);
         // Jika admin sudah login, lanjutkan ke middleware berikutnya atau ke endpoint yang diminta
         next();
     } else {

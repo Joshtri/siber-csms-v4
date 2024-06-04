@@ -112,8 +112,9 @@ const PBSchema = new mongoose.Schema({
   },
   fungsi_dituju2: {
     type: String,
-    enum: ['ICT', 'WIWS', 'PE', 'RAM',  'PRODUKSI', 'SCM']
-
+    enum: ['ICT', 'WIWS', 'PE', 'RAM',  'PRODUKSI', 'SCM', 'HSSE'],
+    required: true
+    
   },
 
 });

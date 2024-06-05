@@ -23,7 +23,9 @@
                 Data Mitra
               </a>
               <ul class="dropdown-menu" aria-labelledby="dataMitraDropdown">
+                <% if (divisi_user.divisi_name === 'HSSE') { %>
                 <li><a class="dropdown-item" id="menu-data-mitra" href="/data/hseplan_data">Data Mitra-HSE Plan</a></li>
+                <% } %> 
                 <li><a class="dropdown-item" id="menu-data-mitra" href="/data/psb_data">Data Mitra-PSB</a></li>
                 <li><a class="dropdown-item" id="menu-data-mitra" href="/data/pa_data">Data Mitra-PA</a></li>
                 <li><a class="dropdown-item" id="menu-data-mitra" href="/data/pb_data">Data Mitra-PB</a></li>

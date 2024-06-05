@@ -100,6 +100,8 @@ export const postFormHSEPlan = async (req, res) => {
 
 export const readHSEData = async (req, res) => {
     try {
+        const divisi_user = req.session.divisi_user; 
+
         const userRole = req.session.divisi_user ? req.session.divisi_user.divisi_name : null;
         let title = "HSE PLAN Data";
         // Hanya menampilkan data jika peran pengguna adalah 'HSSE'
@@ -113,7 +115,8 @@ export const readHSEData = async (req, res) => {
             res.render('hseplan.data.ejs', {
                 dataHse: hseData,
                 title,
-                messageSuccessVerify
+                messageSuccessVerify,
+                divisi_user
             });
         } else {
             // Jika peran pengguna bukan 'HSSE', kembalikan ke halaman login
@@ -128,6 +131,7 @@ export const readHSEData = async (req, res) => {
 
 export const detailHSEData = async (req, res) => {
     try {
+        const divisi_user = req.session.divisi_user; 
         const userRole = req.session.divisi_user ? req.session.divisi_user.divisi_name : null;
         let title = "HSE PLAN - Detail Data";
         // Hanya menampilkan data jika peran pengguna adalah 'HSSE'
@@ -159,6 +163,7 @@ export const detailHSEData = async (req, res) => {
                 dataHse: hseData,
                 title,
                 fileURLs,
+                divisi_user
             });
         } else {
             // Jika peran pengguna bukan 'HSSE', kembalikan ke halaman login
@@ -174,6 +179,7 @@ export const detailHSEData = async (req, res) => {
 //GET DATA ONLY FOR EDIT
 export const editHSEData = async (req, res) => {
     try {
+        const divisi_user = req.session.divisi_user; 
         const userRole = req.session.divisi_user ? req.session.divisi_user.divisi_name : null;
         let title = "HSE PLAN - Detail Data";
         // Hanya menampilkan data jika peran pengguna adalah 'HSSE'
@@ -205,6 +211,7 @@ export const editHSEData = async (req, res) => {
                 dataHse: hseData,
                 title,
                 fileURLs,
+                divisi_user
             });
         } else {
             // Jika peran pengguna bukan 'HSSE', kembalikan ke halaman login
@@ -219,6 +226,7 @@ export const editHSEData = async (req, res) => {
 
 export const postEditHSEData = async (req, res) => {
     try {
+        const divisi_user = req.session.divisi_user; 
         const userRole = req.session.divisi_user ? req.session.divisi_user.divisi_name : null;
         if (userRole === 'HSSE') {
             const hseId = req.params.id;
@@ -227,7 +235,8 @@ export const postEditHSEData = async (req, res) => {
             const hseData = await HSEPlan.findByIdAndUpdate(hseId, {
                 status_mitra,
                 nilai_total,
-                keterangan_verifikasi
+                keterangan_verifikasi,
+                divisi_user
             }, { new: true });
 
             if (!hseData) {

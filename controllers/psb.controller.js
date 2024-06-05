@@ -105,6 +105,7 @@ export const postFormPSB = async (req, res) => {
 
 export const readPSBData = async (req, res) => {
     try {
+        const divisi_user = req.session.divisi_user; 
         // Periksa peran pengguna yang masuk
         const userRole = req.session.divisi_user ? req.session.divisi_user.divisi_name : null;
         const messageSuccessVerify = await req.flash('successVerifyPsb');
@@ -133,7 +134,8 @@ export const readPSBData = async (req, res) => {
             res.render('psb.data.ejs', {
                 dataPSB: readResults,
                 title,
-                messageSuccessVerify
+                messageSuccessVerify,
+                divisi_user
             });
         } else {
             // Tampilkan pesan atau lakukan sesuatu jika pengguna tidak memiliki peran yang sesuai
@@ -147,6 +149,7 @@ export const readPSBData = async (req, res) => {
 
 export const detailPSBData = async (req, res) => {
     try {
+        const divisi_user = req.session.divisi_user; 
         const userRole = req.session.divisi_user ? req.session.divisi_user.divisi_name : null;
         const psbId = req.params.id;
 
@@ -176,6 +179,7 @@ export const detailPSBData = async (req, res) => {
                 dataPSB: psbData,
                 title: "PSB Detail Data",
                 fileURLs,
+                divisi_user
             });
         } else {
             // Jika pengguna tidak memiliki akses, kembalikan ke halaman login
@@ -229,6 +233,7 @@ export const editPSBData = async (req, res) => {
 
 export const postEditPsbData = async (req, res) => {
     try {
+        const divisi_user = req.session.divisi_user; 
         const userRole = req.session.divisi_user ? req.session.divisi_user.divisi_name : null;
         if (userRole === 'HSSE' || userRole === (await PSB.findById(req.params.id)).fungsi_dituju2) {
             const psbId = req.params.id;
@@ -238,7 +243,8 @@ export const postEditPsbData = async (req, res) => {
                 status_mitra,
                 status_mitra2,
                 nilai_total,
-                keterangan_verifikasi
+                keterangan_verifikasi,
+                divisi_user
             }, { new: true });
 
             if (!psbData) {

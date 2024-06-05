@@ -105,6 +105,7 @@ export const postFormPB = async (req, res) => {
 
 export const readPBData = async (req, res) => {
     try {
+        const divisi_user = req.session.divisi_user; 
         // Periksa peran pengguna yang masuk
         const userRole = req.session.divisi_user ? req.session.divisi_user.divisi_name : null;
         let title = "PB Data";
@@ -132,7 +133,8 @@ export const readPBData = async (req, res) => {
             res.render('pb.data.ejs', {
                 dataPB: readResults,
                 title,
-                messageSuccessVerify
+                messageSuccessVerify,
+                divisi_user
             });
         } else {
             // Tampilkan pesan atau lakukan sesuatu jika pengguna tidak memiliki peran yang sesuai
@@ -147,6 +149,7 @@ export const readPBData = async (req, res) => {
 
 export const detailPBData = async (req, res) => {
     try {
+        const divisi_user = req.session.divisi_user; 
         const userRole = req.session.divisi_user ? req.session.divisi_user.divisi_name : null;
         const pbId = req.params.id;
 
@@ -176,6 +179,7 @@ export const detailPBData = async (req, res) => {
                 dataPB: pbData,
                 title: "PB Detail Data",
                 fileURLs,
+                divisi_user
             });
         } else {
             // Jika pengguna tidak memiliki akses, kembalikan ke halaman login
@@ -191,6 +195,7 @@ export const detailPBData = async (req, res) => {
 
 export const editPBData = async (req, res) => {
     try {
+        
         const userRole = req.session.divisi_user ? req.session.divisi_user.divisi_name : null;
         const divisi_user = req.session.divisi_user; 
         const pbId = req.params.id;

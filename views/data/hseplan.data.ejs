@@ -66,11 +66,11 @@
                 <thead class="thead-dark">
                     <tr class="text-center">
                         <th>No</th>
+                        <th>Nama Pekerjaan</th>
                         <th>Nama Mitra</th>
                         <th>Risk Level</th>
                         <th>Tanggal Audit</th>
                         <th>Penilaian</th>
-                        <th>Email Mitra</th>
                         <th>Progres</th>
                         <th>Aksi</th>
                     </tr>
@@ -80,11 +80,31 @@
                         <% dataHse.forEach((item, index) => { %>
                             <tr class="text-center">
                                 <td><%= index + 1 %></td>
+                                <td class="text-capitalize">
+                                    <%
+                                      const maxNamaPekerjaan = 10;
+                                      const namaPekerjaan = item.nama_pekerjaan || "kosong";
+                                  
+                                      if (namaPekerjaan.length > maxNamaPekerjaan) {
+                                        // If the title is too long, display a truncated version with "read more" link
+                                        const truncatedTitle = namaPekerjaan.substring(0, maxNamaPekerjaan);
+                                    %>
+                                    
+                                    <%= truncatedTitle %>
+                                    <a class="custom-tooltip" href="#"data-bs-toggle="tooltip" data-bs-title="<%= item.nama_pekerjaan %>"  class="read-more-link small">. .  . </a>
+                                  
+                                  
+                                    <% } else { %>
+                                  
+                                    <%= namaPekerjaan %>
+                                  
+                                    <% } %>
+                                </td>
                                 <td><%= item.nama_mitra %></td>
                                 <td class="text-capitalize"><%= item.risk_level %></td>
                                 <td><%= new Date(item.tanggal_audit).toLocaleDateString('id-ID') %></td>
                                 <td><%= item.nilai_total %></td>
-                                <td><%= item.alamat_email %></td>
+
                                 
                                 <td>
                                     <% if (item.status_mitra === "Belum Diproses") { %>

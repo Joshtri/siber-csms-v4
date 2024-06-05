@@ -98,7 +98,9 @@ export const postFormPA = async (req, res) => {
 
 export const readPAData = async (req, res) => {
     try {
+        
         // Periksa peran pengguna yang masuk
+        const divisi_user = req.session.divisi_user; 
         const userRole = req.session.divisi_user ? req.session.divisi_user.divisi_name : null;
         let title = "PA Data";
         if (!req.session.divisi_user || !req.session.divisi_user.divisi_name) {
@@ -125,7 +127,8 @@ export const readPAData = async (req, res) => {
             res.render('pa.data.ejs', {
                 dataPA: readResults,
                 title,
-                messageSuccessVerify
+                messageSuccessVerify,
+                divisi_user
             });
         } else {
             // Tampilkan pesan atau lakukan sesuatu jika pengguna tidak memiliki peran yang sesuai
@@ -141,6 +144,7 @@ export const readPAData = async (req, res) => {
 
 export const detailPAData = async (req, res) => {
     try {
+        const divisi_user = req.session.divisi_user; 
         const userRole = req.session.divisi_user ? req.session.divisi_user.divisi_name : null;
         const paId = req.params.id;
 
@@ -162,6 +166,7 @@ export const detailPAData = async (req, res) => {
                 dataPA: paData,
                 title: "PA Detail Data",
                 fileURLs,
+                divisi_user
             });
         } else {
             // Jika pengguna tidak memiliki akses, kembalikan ke halaman login
@@ -175,6 +180,7 @@ export const detailPAData = async (req, res) => {
 
 export const editPAData = async (req, res) => {
     try {
+        
         const userRole = req.session.divisi_user ? req.session.divisi_user.divisi_name : null;
         const divisi_user = req.session.divisi_user; 
         const paId = req.params.id;
@@ -219,6 +225,7 @@ export const editPAData = async (req, res) => {
 
 export const postEditPAData = async (req, res) => {
     try {
+        const divisi_user = req.session.divisi_user; 
         const userRole = req.session.divisi_user ? req.session.divisi_user.divisi_name : null;
         if (userRole === 'HSSE' || userRole === (await PA.findById(req.params.id)).fungsi_dituju2) {
             const paId = req.params.id;
@@ -228,7 +235,8 @@ export const postEditPAData = async (req, res) => {
                 status_mitra,
                 status_mitra2,
                 nilai_total,
-                keterangan_verifikasi
+                keterangan_verifikasi,
+                divisi_user
             }, { new: true });
 
             if (!paData) {

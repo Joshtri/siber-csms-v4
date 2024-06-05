@@ -61,11 +61,11 @@
                 <thead class="thead-dark">
                     <tr class="text-center">
                         <th>No</th>
+                        <th>Nama Pekerjaan</th>
                         <th>Nama Kontraktor</th>
                         <th>Risk Level</th>
                         <th>Tanggal Penilaian</th>
                         <th>Penilaian</th>
-                        <th>Email Mitra</th>
                         <th>Progres</th>
                         <th>Aksi</th>
                     </tr>
@@ -75,11 +75,30 @@
                         <% dataPA.forEach((item, index) => { %>
                             <tr class="text-center">
                                 <td><%= index + 1 %></td>
+                                <td class="text-capitalize">
+                                    <%
+                                      const maxNamaPekerjaan = 10;
+                                      const namaPekerjaan = item.nama_pekerjaan || "kosong";
+                                  
+                                      if (namaPekerjaan.length > maxNamaPekerjaan) {
+                                        // If the title is too long, display a truncated version with "read more" link
+                                        const truncatedTitle = namaPekerjaan.substring(0, maxNamaPekerjaan);
+                                    %>
+                                    
+                                    <%= truncatedTitle %>
+                                    <a class="custom-tooltip" href="#"data-bs-toggle="tooltip" data-bs-title="<%= item.nama_pekerjaan %>"  class="read-more-link small">. .  . </a>
+                                  
+                                  
+                                    <% } else { %>
+                                  
+                                    <%= namaPekerjaan %>
+                                  
+                                    <% } %>
+                                </td>
                                 <td><%= item.nama_kontraktor %></td>
                                 <td class="text-capitalize"><%= item.risk_level %></td>
                                 <td><%= new Date(item.tanggal_penilaian).toLocaleDateString('id-ID') %></td>
                                 <td><%= item.penilaian %></td>
-                                <td><%= item.alamat_email %></td>
                                 <td>
                                     <% if (item.status_mitra === "Belum Diproses") { %>
                                         <button type="button" class="btn btn-sm btn-status-warm custom-tooltip" data-bs-title="Verifikasi : Diproses" data-bs-toggle="tooltip">

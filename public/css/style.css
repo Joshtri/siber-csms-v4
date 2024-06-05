@@ -69,7 +69,7 @@ h6 {
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
-#header {
+/* #header {
   background: #fff;
   transition: all 0.5s;
   z-index: 997;
@@ -96,7 +96,7 @@ h6 {
  
 #header .logo img {
   max-height: 40px;
-}
+} */
 
 .scrolled-offset {
   margin-top: 70px;

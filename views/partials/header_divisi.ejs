@@ -1,48 +1,39 @@
 <!-- ======= Header ======= -->
 <title><%= title %></title>
 
-<header
-  id="header"
-  class="d-flex align-items-center"
-  style="background-color: #32599c"
->
-  <div class="container d-flex align-items-center">
-    <div class="d-flex">
-      <h1 class="logo me-auto">
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center" style="background-color: #32599c;">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center">
         <a class="navbar-brand me-3" href="/">
-          <img
-            src="/logo.webp"
-            alt="Logo"
-            width="200"
-            height="48"
-            class="d-inline-block align-text-top"
-          />
+          <img src="/logo.webp" alt="Logo" width="200" height="48" class="d-inline-block align-text-top">
         </a>
-      </h1>
-      <a href="/" class="fs-3 fw-bold text-white">| SIBER CSMS</a>
+        <a href="/" class="fs-3 fw-bold text-white">| SIBER CSMS</a>
+      </div>
+
+      <nav id="navbar" class="navbar navbar-expand-lg">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link scrollto active" href="/dashboard_divisi">Dashboard</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dataMitraDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Data Mitra
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="dataMitraDropdown">
+                <li><a class="dropdown-item" id="menu-data-mitra" href="/data/hseplan_data">Data Mitra-HSE Plan</a></li>
+                <li><a class="dropdown-item" id="menu-data-mitra" href="/data/psb_data">Data Mitra-PSB</a></li>
+                <li><a class="dropdown-item" id="menu-data-mitra" href="/data/pa_data">Data Mitra-PA</a></li>
+                <li><a class="dropdown-item" id="menu-data-mitra" href="/data/pb_data">Data Mitra-PB</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- .navbar -->
     </div>
-
-    <!-- Uncomment below if you prefer to use an image logo -->
-
-    <nav id="navbar" class="navbar ms-auto">
-      <ul>
-        <li><a class="nav-link scrollto active" href="/dashboard_divisi">Dashboard</a></li>
-        <li class="dropdown"><a href="#"><span>Data Mitra</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-                <li><a  id="menu-data-mitra" href="/data/hseplan_data">Data Mitra-HSE Plan</a></li>
-                <li><a  id="menu-data-mitra" href="/data/psb_data">Data Mitra-PSB </a></li>
-                <li><a  id="menu-data-mitra" href="/data/pa_data">Data Mitra-PA</a></li>
-                <li><a  id="menu-data-mitra" href="/data/pb_data">Data Mitra-PB </a></li>
-            </ul>
-        </li>
-
-        
-        <li><a href="/logout">Log Out</a></li>
-        
-      </ul>
-      <i class="bi bi-list mobile-nav-toggle"></i>
-    </nav>
-    <!-- .navbar -->
-  </div>
-</header>
-<!-- End Header -->
+  </header>
+  <!-- End Header -->

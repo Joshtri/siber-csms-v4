@@ -32,70 +32,65 @@
           </section>
           <!-- End Breadcrumbs -->
     
-          <!-- *KOTAK KHUSUS dashboard -->
-          <section id="portfolio-details" class="portfolio-details ">
-            <div class="container mt-5">
+          <section id="portfolio-details" class="portfolio-details mt-5">
+            <div class="container">
               <div class="row">
-                <!-- <h3 class="">Ikhtisar Data</h3> -->
-    
                 <div class="col-3">
-                  <div class="portfolio-info">
-                  <h5>Pengusulan :</h5>
-                  <hr style="border-bottom: 1px solid #eee;">
-                  
-                  <h5 class="text-center">5</h5>
-                  <p class="small fw-light" data-bs-toggle="modal" data-bs-target="#detailPengusul">Lihat Detail<i class="mt-3 mx-1 fa-solid fa-up-right-from-square fa-bounce"></i></p>
-                  </div>
-                </div>
-    
-                <div class="col-3">
-                  <div class="portfolio-info">
-                    <h5>Verifikasi User :</h5>
-                    <hr style="border-bottom: 1px solid #eee;">
-                    
-                    <h5 class="text-center">6</h5>
-                    <p class="small fw-light mt-3" onmouseover="showCardVerifikasiUser()" onmouseout="hideCardVerifikasiUser()">Lihat Detail<i class="mx-1 fa-solid fa-up-right-from-square fa-bounce"></i></p>
-                  </div>
-    
-                  <!-- Card untuk ditampilkan saat hover -->
-                  <div id="card-verifikator-user" class="portfolio-info mt-3 animate__animated" style="display: none;">
+                  <div class="card">
                     <div class="card-body">
-                      <!-- Isi card disini -->
-                      <h6 class="fw-bold">Ikhtisar Data</h6><br>
-    
-                      <p>HSE Plan : <%=  %></p>
-                      <p>PSB : <%=  %></p>
-                      <p>PA : <%=  %></p>
-                      <p>PB : <%=  %></p>
-                      
+                      <h5 class="card-title">Pengusulan :</h5>
+                      <hr>
+                      <h5 class="text-center">5</h5>
+                      <p class="card-text small fw-light">Lihat Detail <i class="fa-solid fa-up-right-from-square fa-bounce"></i></p>
                     </div>
                   </div>
-    
                 </div>
-    
+          
                 <div class="col-3">
-                  <div class="portfolio-info">
-                  <h5>Verifikasi HSSE :</h5>
-                  <hr style="border-bottom: 1px solid #eee;">
-                  
-                  <h5 class="text-center">4</h5>
-                  <p class="small fw-light"><i class=" hidden mt-3 mx-1 fa-solid fa-up-right-from-square fa-bounce"></i></p>
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Verifikasi User :</h5>
+                      <hr>
+                      <h5 class="text-center">6</h5>
+                      <p class="card-text small fw-light" onmouseover="showCardVerifikasiUser()" onmouseout="hideCardVerifikasiUser()">Lihat Detail <i class="fa-solid fa-up-right-from-square fa-bounce"></i></p>
+                    </div>
+                    <!-- Card untuk ditampilkan saat hover -->
+                    <div id="card-verifikator-user" class="card-body animate__animated" style="display: none;">
+                      <!-- Isi card disini -->
+                      <h6 class="card-title fw-bold">Ikhtisar Data</h6><br>
+                      <p class="card-text">HSE Plan : <%=  %></p>
+                      <p class="card-text">PSB : <%=  %></p>
+                      <p class="card-text">PA : <%=  %></p>
+                      <p class="card-text">PB : <%=  %></p>
+                    </div>
                   </div>
                 </div>
-    
+          
                 <div class="col-3">
-                  <div class="portfolio-info">
-                  <h5>Usulan di Tolak :</h5>
-                  <hr style="border-bottom: 1px solid #eee;">
-                  
-                  <h5 class="text-center">5</h5>
-                  
-                  <p class="small fw-light"><i class=" mt-3 mx-1 fa-solid fa-up-right-from-square fa-bounce hidden"></i></p>
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Verifikasi HSSE :</h5>
+                      <hr>
+                      <h5 class="text-center">4</h5>
+                      <p class="card-text small fw-light"><i class="fa-solid fa-up-right-from-square fa-bounce hidden"></i></p>
+                    </div>
+                  </div>
+                </div>
+          
+                <div class="col-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Usulan di Tolak :</h5>
+                      <hr>
+                      <h5 class="text-center">5</h5>
+                      <p class="card-text small fw-light"><i class="fa-solid fa-up-right-from-square fa-bounce hidden"></i></p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </section>
+          
           <!-- END KOTAK KHUSUS DASHBOARD -->
         </div>
         <!-- END DASHBOARD -->

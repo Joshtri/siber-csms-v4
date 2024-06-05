@@ -12,24 +12,27 @@
 <body>
     <%-include('partials/header_divisi'); %>
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-        <div class="container">
-
-            <div class="d-flex justify-content-between align-items-center">
-            <h2 class="fw-bold">Data Mitra - PSB</h2>
-            </div>
-            
-            <div class="d-flex justify-content-between align-items-center">
-            <ol>
-                <li><a href="/dashboard_divisi" ><i class="fa-solid fa-house me-1"></i>Dashboard Pertamina</a></li>
-                <li>Data Mitra</li>
-                <li>PSB</li>
-            </ol>
-            </div>
-            
-        </div>
-    </section><!-- End Breadcrumbs -->
+  <!-- ======= Breadcrumbs ======= -->
+  <section id="breadcrumbs" class="py-3 bg-light">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h2 class="fw-bold">Data Mitra - PSB</h2>
+      </div>
+      
+      <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="/dashboard_divisi">
+              <i class="bi bi-house me-1"></i>Dashboard Pertamina
+            </a>
+          </li>
+          <li class="breadcrumb-item">Data Mitra</li>
+          <li class="breadcrumb-item active" aria-current="page">PSB</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+  <!-- End Breadcrumbs -->
 
         <!-- *KOTAK KHUSUS dashboard -->
     <section id="portfolio-details" class="portfolio-details ">

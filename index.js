@@ -6,8 +6,8 @@ import session from 'express-session';
 
 import flash from 'connect-flash';
 import path from 'path';
-import redis from 'redis';
-import RedisStore from 'connect-redis';
+// import RedisStore from 'connect-redis';
+import MongoStore from 'connect-mongo';
 
 import 'dotenv/config';
 const app = express();
@@ -26,14 +26,14 @@ import connectDB from './config/configDb.js';
 // import customerRoute from './routes/customer.route.js';
 // import transactionRoute from './routes/transaction.route.js';
 
-const client = redis.createClient({
-  password: process.env.REDIS_PASS,
-  socket: { 
-    host: process.env.REDIS_HOST,
-    port: process.env.REDIS_PORT,
-  }
-});
-(async () => { await client.connect(); })();
+// const client = redis.createClient({
+//   password: process.env.REDIS_PASS,
+//   socket: { 
+//     host: process.env.REDIS_HOST,
+//     port: process.env.REDIS_PORT,
+//   }
+// });
+// (async () => { await client.connect(); })();
 // Express Session
 app.use(
     session({
@@ -42,12 +42,10 @@ app.use(
       resave: false,
       saveUninitialized: true,
       name: 'siber-csms',
-      store: new RedisStore({ 
-        client: client,
-        ttl: 3600, // waktu kadaluwarsa dalam detik (misalnya 1 jam)
-      
-      
-      }),
+      store: MongoStore.create({
+        mongoUrl: process.env.MONGODB_URI, // Replace with your MongoDB connection string
+        collectionName: 'sessions'
+      })
     
       
     })
@@ -57,7 +55,7 @@ app.use(
 app.use(flash());
 connectDB();
 
-const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+// const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 // Gunakan middleware untuk membaca JSON
 app.use(express.urlencoded({ extended: true }));
@@ -75,10 +73,10 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(process.cwd(), 'public')));
 
 // Apply delay to all routes for testing purposes
-app.use(async (req, res, next) => {
-    await delay(); // Delay of 5 seconds
-    next();
-});
+// app.use(async (req, res, next) => {
+//     await delay(); // Delay of 5 seconds
+//     next();
+// });
 
 app.use('/', mainRoute, dashboardRoute);
 app.use('/data', hseplanRoute, psbRoute,paRoute,pbRoute);
@@ -93,6 +91,10 @@ const viewsDirectories = [
     path.join(__dirname, 'views', 'edit')
 ];
 
+// Tangani kesalahan jika rute tidak ditemukan
+app.use((req, res, next) => {
+  res.status(404).send("Sorry can't find that!");
+});
 
 app.set('views', viewsDirectories);
 

@@ -99,8 +99,22 @@
 
                         <% if (dataPB) { %>
                             <h2>Detail HSE Plan</h2>
-                            <p>Risk Assessment ID: <%= dataPB.risk_assessment_id %></p>
+
                             <!-- Tambahkan informasi lainnya yang Anda ingin tampilkan -->
+                            <div class="mt-3">
+                                <h5>Poin-Poin Utama pada berkas :</h5>
+                                <ol>
+                                    <li>Kepemimpinan dan Komitmen</li>
+                                    <li>Kebijakan HSSE & Strategi</li>
+                                    <li>Organisasi, Tanggung Jawab, Sumber Daya,Standar & Dokumentasi</li>
+                                        
+                                    <li>Manajemen Risiko</li>
+                                    <li>Perencanaan & Prosedur</li>
+                                    <li>Implementasi & Pemantauan Kinerja</li>
+                                    <li>Audit dan Tinjauan</li>
+                                    <li>Manajemen K3LL & Pencapaian Lainnya</li>
+                                </ol>
+                            </div>
                         
                             <!-- Loop untuk menampilkan informasi file -->
                             <% for (let i = 1; i <= 1; i++) { %>

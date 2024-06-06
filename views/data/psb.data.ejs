@@ -100,7 +100,7 @@
                                 <td class="text-capitalize"><%= item.risk_level %></td>
                                 <td><%= new Date(item.tanggal_penilaian).toLocaleDateString('id-ID') %></td>
                                 <td><%= item.nomor_kontrak %></td>
-                                <td><%= item.penilaian %></td>
+                                <td><%= item.nilai_total %></td>
                                 <td>
                                     <% if (item.status_mitra === "Belum Diproses") { %>
                                         <button type="button" class="btn btn-sm btn-status-warm custom-tooltip" data-bs-title="Verifikasi : Diproses" data-bs-toggle="tooltip">

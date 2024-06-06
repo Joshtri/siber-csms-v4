@@ -237,3 +237,34 @@ export const editPBData = async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 };
+
+
+export const postEditPBData = async (req, res) => {
+    try {
+        const divisi_user = req.session.divisi_user; 
+        const userRole = req.session.divisi_user ? req.session.divisi_user.divisi_name : null;
+        if (userRole === 'HSSE' || userRole === (await PB.findById(req.params.id)).fungsi_dituju2) {
+            const pbId = req.params.id;
+            const { status_mitra, status_mitra2, nilai_total, keterangan_verifikasi } = req.body;
+
+            const pbData = await PB.findByIdAndUpdate(pbId, {
+                status_mitra,
+                status_mitra2,
+                nilai_total,
+                keterangan_verifikasi,
+                divisi_user
+            }, { new: true });
+
+            if (!pbData) {
+                return res.status(404).send('Data not found');
+            }
+
+            res.redirect(`/data/pb_data`);
+        } else {
+            return res.redirect('/login_pertamina');
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+};

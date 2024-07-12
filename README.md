@@ -33,7 +33,7 @@
 Pastikan Anda sudah menginstall software berikut:
 - ![Node.js](https://img.shields.io/badge/Node.js-20.13.1-green)  (versi 20.13.1 atau lebih baru)
 - ![MongoDB](https://img.shields.io/badge/MongoDB-9.3.0-green) (mongodb.com)
-- ![yarn](https://img.shields.io/badge/pnpm-1.22.22-orange) (atau lebih baru)
+- ![yarn](https://img.shields.io/badge/yarn-1.22.22-orange) (atau lebih baru)
 ##  Setup & Installation:
 
 1. **Clone the repository:**

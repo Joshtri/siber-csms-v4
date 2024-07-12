@@ -26,7 +26,8 @@
 - **Session Management**: Menggunakan `express-session` and `connect-mongo`
 - **Method Override**: Memungkinkan penggunaan metode PUT atau DELETE di tempat yang tidak didukung oleh klien.
 - **dotenv**: Mengelola env variable yang digunakan dalam projetc web dengan `dotenv`
-- **firebase**: digunakan untuk menyimpan storage berkas
+- **firebase**: digunakan untuk menyimpan storage berkas berupa pdf
+- **multer** : digunakan untuk melakukan konfigurasi pada sistem untuk mengupload berkas
 
 ###  Prerequisites
 Pastikan Anda sudah menginstall software berikut:
